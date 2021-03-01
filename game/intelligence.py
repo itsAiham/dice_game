@@ -20,13 +20,11 @@ class Intelligence():
     def act_easy(self):
         """Return decision as an easy level."""
 
-        print("act easy")
         return random.choice(self.orders)
 
     def act_normal(self, player):
         """Control decision when level is Normal."""
 
-        print("acting normal")
         if player.get_score() < 10:
             print("Low score")
             return True
@@ -36,19 +34,21 @@ class Intelligence():
         """Method control dicison when level is hard.
         Notice that the computer has ability to cheat."""
 
-        print("ACTIIGN HARD")
         cheat_decison = random.choice(self.orders)
         if cheat_decison and value not in (1, 6):
-            print("Computer is also a CHEATER!!")
+            print("bst bst -->  Computer also is a CHEATER!!")
             return True
-        return self.act_easy()
+        return False
 
     def get_inti_decision(self, player, dice_value):
         """Currying append to level."""
         if self.level == "normal":
+            print("My level now is Normal.")
             return self.act_normal(player)
 
         if self.level == "hard":
+            print("My level now is Hard. Watch Out!!")
             return self.act_hard(dice_value)
 
+        print("My level now is Easy.")
         return self.act_easy()

@@ -5,11 +5,14 @@
 class Histogram():
     """Histogram Class."""
 
-    user_list = []
-    computer_list = []
+    user1_list = []
+    user2_list = []
 
     min = 1
     max = 6
+
+    def __init__(self, player1):
+        self.player1 = player1
 
     def add_histogram(self, player, rolled_dice):
         """
@@ -17,18 +20,18 @@ class Histogram():
         append to the score thay get.
         """
 
-        if player.get_name() != "Computer":
-            self.user_list.append(rolled_dice)
+        if player == self.player1:
+            self.user1_list.append(rolled_dice)
         else:
-            self.computer_list.append(rolled_dice)
+            self.user2_list.append(rolled_dice)
 
-    def print_histogram(self, name):
+    def print_histogram(self, player1, player2):
         """Print Histogram"""
 
-        print("{} got the following score within thes game : ".format(name))
-        for ast in self.user_list:
+        print("\n{} got the following score within thes game : ".format(player1))
+        for ast in self.user1_list:
             print(ast * " * ")
 
-        print("Computer got the following score within the game  : ")
-        for ast in self.computer_list:
+        print("\n{} got the following score within thes game : ".format(player2))
+        for ast in self.user2_list:
             print(ast * " * ")

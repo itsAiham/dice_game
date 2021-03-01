@@ -16,9 +16,11 @@ class Player():
         self.score = 0
         self.decision = decision
 
-    def change_name(self, name):
-        """Change player name."""
-        self.name = name
+    
+
+    # def change_name(self, name):
+    #     """Change player name."""
+    #     self.name = name
 
     def change_score(self, score):
         """Change player score."""
