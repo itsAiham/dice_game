@@ -10,6 +10,7 @@ class Player():
     """Player Class."""
 
     reaction = Intelligence(None)
+    score_list = []
 
     def __init__(self, name, decision):
         self.name = name

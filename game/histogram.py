@@ -5,33 +5,22 @@
 class Histogram():
     """Histogram Class."""
 
-    user1_list = []
-    user2_list = []
-
-    min = 1
-    max = 6
-
-    def __init__(self, player1):
-        self.player1 = player1
-
     def add_histogram(self, player, rolled_dice):
         """
         Add to the player's list the equivalent asterisk
         append to the score thay get.
         """
-
-        if player == self.player1:
-            self.user1_list.append(rolled_dice)
-        else:
-            self.user2_list.append(rolled_dice)
+        player.score_list.append(rolled_dice)
 
     def print_histogram(self, player1, player2):
         """Print Histogram"""
 
-        print("\n{} got the following score within thes game : ".format(player1))
-        for ast in self.user1_list:
-            print(ast * " * ")
+        print("\n{} got the following score within thes game : \n".format(player1.get_name()))
+        self.print_asterisk(player1.score_list)
 
-        print("\n{} got the following score within thes game : ".format(player2))
-        for ast in self.user2_list:
-            print(ast * " * ")
+        print("\n{} got the following score within thes game : \n".format(player2.get_name()))
+        self.print_asterisk(player1.score_list)
+
+    def print_asterisk(self, player_list):
+        """Print the equavelent asterisks in the list."""
+        list(map(lambda x : print(x * " * "), player_list))

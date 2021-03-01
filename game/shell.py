@@ -28,9 +28,9 @@ class Shell(cmd.Cmd):
                 self.game.set_computer_controler(False)
                 self.computer_control = self.game.create_player(2)
             else:
-                print("Wrong choice! Enter 'start 1' or 'start 2'.\n")    
-        except AttributeError:
-            print("do start error")
+                print("Wrong choice! Enter 'start 1' or 'start 2'.\n")
+        except ValueError:
+            print("An Error occured! Try again!")
 
     def do_roll(self, _):
         """Roll the dice"""
@@ -39,8 +39,13 @@ class Shell(cmd.Cmd):
                 self.game.roll()
             else:
                 print("Game is End.\nYou can enter 'start 1' or 'start 2' to start a new game")
+        except AttributeError:
+            print("You need to start a new game first.")
         except ValueError:
-            print("You need to start the game first.")
+            self.__delattr__("game")
+            print("deleted")
+            self.__init__()
+            print(ValueError)
 
     def do_name(self, new_name):
         """Change player name."""
@@ -71,12 +76,20 @@ class Shell(cmd.Cmd):
         print("The next dice value is {n},"
         "you know what to do, don't yah! =)\n".format(n = self.game.cheat()))
 
+    def do_score(self, _):
+        """Read from highscore file."""
+        try:
+            self.game.highscore()
+        except AttributeError:
+            print("Sorry! You need to start a game firt.")
+
     def do_help(self, *args):
         """Print orders' format"""
-        # cmd.Cmd.do_help(self, *args) 
-        print("\nstart _: Enter 'start' + 'space' + '1' or '2' to start a new game.")
+
+        print("\nstart _: Enter 'start' + 'space' + '1' or '2' to start or restart a new game.")
         print("name _: 'name' + 'the wnated name' to change the current player name.")
         print("roll: Roll the dice.")
+        print("score: Print out highscores.")
         print("pass: To hold the turn and switch to the next player.")
         print("cheat: Return the value of the upcoming dice.")
         print("level: Change the computer level.")
