@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+"""."""
+# !/usr/bin/env python3
 # pylint: disable=missing-module-docstring
 
 
@@ -11,6 +12,7 @@ class Intelligence():
     orders = [True, False, True]
 
     def __init__(self, level):
+        """."""
         self.level = level
 
     def act_easy(self):
@@ -25,9 +27,9 @@ class Intelligence():
         return self.act_easy()
 
     def act_hard(self, value):
-        """Method control dicison when level is hard.
-        Notice that the computer has ability to cheat."""
-        print("value " , value)
+        """."""
+        """Notice that the computer has ability to cheat."""
+        print("value ", value)
         if self.cheat_decison() and value not in (1, 6):
             print("Computer: I think my score gonna be higher now!")
             return True
@@ -41,7 +43,6 @@ class Intelligence():
 
     def get_inti_decision(self, player, dice_value):
         """Currying ap  pend to level."""
-
         if self.level == "normal":
             return self.act_normal(player)
 
@@ -50,4 +51,5 @@ class Intelligence():
         return self.act_easy()
 
     def cheat_decison(self):
+        """."""
         return random.choice(self.orders)

@@ -23,7 +23,8 @@ class Game():
     def create_player(self, player_amount):
         player1_name = input("Enter the first player's name >> ")
         self.player1 = Player(player1_name,  bool)
-        self.set_playing_now(self.player1) #  Hold player object temporarily
+        self.set_playing_now(self.player1)
+        #  Hold player object temporarily above
         self.histogram = Histogram()
 
         if player_amount == 2:

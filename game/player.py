@@ -1,6 +1,11 @@
+""".
+
+This controls the intelligence and logic of the whole game
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
 
 
 from intelligence import Intelligence
@@ -12,16 +17,15 @@ class Player():
     reaction = Intelligence(None)
 
     def __init__(self, name, decision):
+        """. Initialisation."""
         self.name = name
         self.score = 0
         self.score_list = []
         self.decision = decision
 
-    
-
-    # def change_name(self, name):
-    #     """Change player name."""
-    #     self.name = name
+# def change_name(self, name):
+#     """Change player name."""
+#     self.name = name
 
     def change_score(self, score):
         """Change player score."""
@@ -44,11 +48,13 @@ class Player():
         return self.name
 
     def get_score(self):
-        """Return player score"""
+        """Return player score."""
         return self.score
 
     def set_score_list(self, num):
+        """. Initialisation."""
         self.score_list.append(num)
 
     def get_score_list(self):
+        """. Initialisation."""
         return self.score_list

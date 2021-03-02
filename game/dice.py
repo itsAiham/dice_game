@@ -1,4 +1,6 @@
-# pylint: disable=missing-module-docstring
+
+"""."""
+#  pylint: disable=missing-module-docstring
 
 import random
 
@@ -10,6 +12,7 @@ class Dice():
     highest = 6
 
     def __init__(self):
+        """Generate the number rolled on the dice."""
         self.rolled_dice = random.randint(self.lowest, self.highest)
 
     def roll_dice(self):

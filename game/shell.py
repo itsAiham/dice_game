@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+
+# !/usr/bin/env python3
+"""."""
 # pylint: disable=missing-module-docstring
 
 import cmd
@@ -6,7 +8,7 @@ from game import Game
 
 
 class Shell(cmd.Cmd):
-    """Shell class"""
+    """Shell class."""
 
     prompt = '(game): '
     intro = "Enter help or ? to get the words that can be used.\n"
@@ -18,7 +20,7 @@ class Shell(cmd.Cmd):
         self.game = Game()
 
     def do_start(self, player_num):
-        """Game starting"""
+        """Game starting."""
         try:
             self.game.still_going = True
             if player_num == "1":
@@ -33,12 +35,13 @@ class Shell(cmd.Cmd):
             print("An Error occured! Try again!")
 
     def do_roll(self, _):
-        """Roll the dice"""
+        """Roll the dice."""
         try:
             if self.game.get_game_status():
                 self.game.roll()
             else:
-                print("Game is End.\nYou can enter 'start 1' or 'start 2' to start a new game")
+                print("Game is End.\nYou can enter 'start 1' or 'start 2'"
+                      "to start a new game")
         except AttributeError:
             print("You need to start a new game first.")
         except ValueError:
@@ -59,7 +62,7 @@ class Shell(cmd.Cmd):
             print(level_error)
         except AttributeError:
             print("You are playing against a human," +
-            "ask him to change the level not me!!!\n")
+                  "ask him to change the level not me!!!\n")
 
     def do_pass(self, _):
         """Hold turn."""
@@ -74,7 +77,8 @@ class Shell(cmd.Cmd):
     def do_cheat(self, _):
         """Return the upcoming value of the dice."""
         print("The next dice value is {n},"
-        "you know what to do, don't yah! =)\n".format(n = self.game.cheat()))
+              "you know what to do, don't yah! =)\n"
+              "".format(n=self.game.cheat()))
 
     def do_score(self, _):
         """Read from highscore file."""
@@ -84,10 +88,11 @@ class Shell(cmd.Cmd):
             print("Sorry! You need to start a game firt.")
 
     def do_help(self, *args):
-        """Print orders' format"""
-
-        print("\nstart _: Enter 'start' + 'space' + '1' or '2' to start or restart a new game.")
-        print("name _: 'name' + 'the wnated name' to change the current player name.")
+        """Print orders' format."""
+        print("\nstart _: Enter 'start' + 'space' + '1' or '2' to"
+              "start or restart a new game.")
+        print("name _: 'name' + 'the wnated name' to"
+              " change the current player name.")
         print("roll: Roll the dice.")
         print("score: Print out highscores.")
         print("pass: To hold the turn and switch to the next player.")
@@ -96,7 +101,10 @@ class Shell(cmd.Cmd):
         print("q, exit, EOF: Exit the game.\n")
 
     def default(self, line):
-        self.stdout.write('\nOBS! Unknown command: %s.\nEnter help to get info\n' % (line,))
+        """."""
+        self.stdout.write('\nOBS! Unknown command:%s.\n'
+                          "Enter help to get info\n"
+                          '' % (line,))
 
     def do_exit(self, _):
         # pylint: disable=no-self-use
