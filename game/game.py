@@ -73,7 +73,7 @@ class Game():
         """Synchronize between players's scores and rolled dice """
         self.print_out_dice(player, self.dice.get_dice())
         player.change_score(self.dice.get_dice())
-        self.histogram.add_histogram(player, self.dice.get_dice())
+        player.set_score_list(self.dice.get_dice())
         self.print_score(player)
 
         if self.dice.get_dice() in (1, 6):

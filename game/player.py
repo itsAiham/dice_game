@@ -10,11 +10,11 @@ class Player():
     """Player Class."""
 
     reaction = Intelligence(None)
-    score_list = []
 
     def __init__(self, name, decision):
         self.name = name
         self.score = 0
+        self.score_list = []
         self.decision = decision
 
     
@@ -46,3 +46,9 @@ class Player():
     def get_score(self):
         """Return player score"""
         return self.score
+
+    def set_score_list(self, num):
+        self.score_list.append(num)
+
+    def get_score_list(self):
+        return self.score_list
