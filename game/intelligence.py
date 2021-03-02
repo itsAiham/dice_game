@@ -27,7 +27,6 @@ class Intelligence():
         return self.act_easy()
 
     def act_hard(self, value):
-        """."""
         """Notice that the computer has ability to cheat."""
         print("value ", value)
         if self.cheat_decison() and value not in (1, 6):

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3,
 # pylint: disable=missing-module-docstring
+# pylint: disable=R0902
+# pylint: disable=W0622
+# pylint: disable=W0201
 
 
 from player import Player
 from dice import Dice
 from histogram import Histogram
-from intelligence import Intelligence
 from highscore import Highscore
 
 
@@ -20,48 +22,54 @@ class Game():
         self.computer_controlar = False
         self.dice = Dice()
 
-    def create_player(self, player_amount):
-        player1_name = input("Enter the first player's name >> ")
-        self.player1 = Player(player1_name,  bool)
+        self.player1 = Player("USER1",  bool)
         self.set_playing_now(self.player1)
-        #  Hold player object temporarily above
+        self.player2 = Player(("USER2"),  bool)
+        # Basically, player2 may be computer in case user decided.
+        # However, computer_player object has been added to make the
+        # code easier to read. Since computer controlled by another class.
+        self.computer_player = Player("Computer",  bool)
+        self.computer_player.set_level("easy")
+
+        self.score = Highscore(self.player1, self.player2)
         self.histogram = Histogram()
+
+    def create_player(self, player_amount):
+        """Get info from shell.py, fit equavelent players with names"""
+        player1_name = input("Enter the first player's name >> ")
+        self.player1.set_name(player1_name)
+        #  Hold player object temporarily above
 
         if player_amount == 2:
             print("Created another player")
             player2_name = input("Enter the second player's name >> ")
-            self.player2 = Player(player2_name,  bool)
+            self.player2.set_name(player2_name)
 
         else:
             print("Created computer player")
             print(self.set_computer_controler(True))
-            self.computer_player = Player("Computer",  bool)
-            self.computer_player.set_level("easy")
             self.player2 = self.computer_player
-        self.score = Highscore(self.player1, self.player2)
-
 
     def switcher(self):
         """Switch turns between players."""
-        if self.get_computer_controler() and self.get_playing_now() == self.player1:
-            print("found computer controler and setting  ", self.computer_player.get_name())
+        if (self.get_computer_controler() and
+           self.get_playing_now() == self.player1):
             self.set_playing_now(self.computer_player)
             return self.computer_turn()
 
-        if self.get_computer_controler() and self.get_playing_now() == self.computer_player:
-                print("found computer controler and setting  ", self.player1.get_name())
-                self.set_playing_now(self.player1)
+        if (self.get_computer_controler() and
+           self.get_playing_now() == self.computer_player):
+            self.set_playing_now(self.player1)
 
-        if self.get_playing_now() == self.player1 and not self.get_computer_controler():
-            print("found computer controler and returning ", self.player2.get_name())
+        if self.get_playing_now() == self.player1 and not (
+           self.get_computer_controler()):
 
-            print(">>>>> Start {} turn <<<<<\n". format(self.player2.get_name()))
+            print(">>>>> Start {} turn <<<<<\n".format(
+                self.player2.get_name()))
             return self.set_playing_now(self.player2)
-            
 
-        else:
-            print(">>>>> Start {} turn <<<<<\n".format(self.player1.get_name()))
-            return self.set_playing_now(self.player1) 
+        print(">>>>> Start {} turn <<<<<\n".format(self.player1.get_name()))
+        return self.set_playing_now(self.player1)
 
     def roll(self):
         """Roll the dice."""
@@ -79,14 +87,12 @@ class Game():
 
         if self.dice.get_dice() in (1, 6):
             self.dice.roll_dice()
-            # self.switcher()
             return False
 
         if self.get_playing_now().get_score() >= self.win_pig:
             self.end_game(self.playing_now)
             self.set_game_status(False)
-            self.histogram.print_histogram(self.player1.get_name(),
-                                           self.player2.get_name())
+
         self.dice.roll_dice()
         return True
 
@@ -94,22 +100,16 @@ class Game():
         """Take orders from Intelligence class to control the decison"""
         print(">>>>> Start Computer turn <<<<<\n")
 
-        while True:
+        while self.get_game_status():
             reaction = self.computer_player.reaction.get_inti_decision(
                        self.computer_player,
                        self.cheat())
-
-            print("DECISOPJ", reaction)
-
-            if not self.get_game_status():
-                break
 
             if not reaction:
                 print(self.still_going, "statusu")
                 print("\t\t\t\t>>>>>  Computer decide to HOLD <<<<<")
                 self.switcher()
                 break
-
 
             print("\t\t\t\t>>>>>  Computer decide to ROLL <<<<<")
             self.playing_now = self.computer_player
@@ -119,7 +119,6 @@ class Game():
                 print("\t\t\t\t>>>>>  Computer lose its turn <<<<<")
                 self.switcher()
                 break
-
 
     def cheat(self):
         """Return the rolled dice"""
@@ -137,7 +136,7 @@ class Game():
 
     def change_name(self, name):
         """Change player name."""
-        self.human_player.set_name(name)
+        self.playing_now.set_name(name)
 
     @staticmethod
     def print_score(player):
@@ -145,16 +144,18 @@ class Game():
         print("{} score is {}". format(player.get_name(),
                                        player.get_score()))
 
-    def print_out_dice(self, player, number):
+    @staticmethod
+    def print_out_dice(player, number):
         """Print out the dice"""
         print("{} got:". format(player.get_name()))
         print(" ______")
         print(r"|\______\ ")
-        print( "||      |")
-        print( "||   {}  |".format(number))
+        print("||      |")
+        print("||   {}  |".format(number))
         print(r"\|______|"+"\n")
 
     def highscore(self):
+        """Read and print out from highscore file."""
         self.score.read_file()
 
     def end_game(self, player):
@@ -172,7 +173,6 @@ class Game():
     def get_game_status(self):
         """Check the game status"""
         return self.still_going
-
 
     def set_playing_now(self, player):
         """Change object holder to help exchanging players"""
