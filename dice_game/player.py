@@ -1,12 +1,12 @@
-""".
-
-This controls the intelligence and logic of the whole game
-
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*
+
 
 """
 
+This controls the intelligence and logic of the whole game
+
+"""
 
 from intelligence import Intelligence
 
@@ -17,7 +17,7 @@ class Player():
     reaction = Intelligence(None)
 
     def __init__(self, name, decision):
-        """. Initialisation."""
+        """Initialisation."""
         self.name = name
         self.score = 0
         self.score_list = []
@@ -28,7 +28,7 @@ class Player():
         if score not in (1, 6):
             self.score += score
         else:
-            print("OBS!!", end="\n")
+            print("OBS!!\n")
             self.score *= 0
 
     def set_name(self, name):

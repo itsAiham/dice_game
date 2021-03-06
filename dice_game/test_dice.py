@@ -27,14 +27,12 @@ class TestDiceClass(unittest.TestCase):
         self.assertIn(exp, self.faces)
         self.assertTrue(res)
 
-        # self.roll.dice.rolled_dice()
+        # another test
+        dice.roll_dice()
+        self.assertIn(dice.rolled_dice, self.faces)
 
     def test_get_dice(self):
         """Testing the returned value from rolling a die"""
         dice = Dice()
         exp = dice.get_dice()
         self.assertIn(exp, self.faces)
-
-
-if __name__ == '__main__':
-    unittest.main()

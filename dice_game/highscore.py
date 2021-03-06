@@ -1,13 +1,18 @@
-# pylint: disable=missing-module-docstring
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*
+"""Write and Read from .txt file."""
+
+# import json
 
 
 class Highscore():
     """Highscore Class."""
 
     def __init__(self, player1, player2):
-        """."""
         self.player1 = player1
         self.player2 = player2
+        # Check to change to json file later on maybe ?
+        # self.json_score = 'highscore.json'
 
     def write_file(self):
         """Write highscores in file."""
@@ -31,6 +36,7 @@ class Highscore():
     @staticmethod
     def read_file():
         """Read highscore file."""
+        # json_file = json.load(self.json_score)
         try:
             print("\n>>>>>   Score lise :\n")
             with open('score.txt', 'r') as score_file:
@@ -45,3 +51,29 @@ class Highscore():
                 print()
         except FileNotFoundError:
             print("System could not find the highscore file!!")
+
+
+
+# class Highscore():
+
+#     file = "highscore.json"
+
+    
+#     def __init__(self, player1, player2):
+#         self.player1 = player1
+#         self.player2 = player2
+#         # Check to change to json file later on maybe ?
+
+
+#     def read_file(self):
+#         """Open the highscore file."""
+#         with open(self.file, "r") as highscore:
+#             print("The file {} is now opened.".format(self.file))
+
+#     def highscore2(self):
+#         """Open the highscore file."""
+#         try:
+#             with open(self.file, "r") as highscore:
+#                 print("The file {} is now opened.".format(self.file))
+#         except FileNotFoundError:
+#             print("Exception raised: File Not Found")

@@ -35,7 +35,6 @@ class Shell(cmd.Cmd):
                 self.computer_control = self.game.create_player(2)
             else:
                 print("Wrong choice! Enter 'start 1' or 'start 2'.\n")
-                raise ArithmeticError("Ads")
         except AttributeError:
             print("An Error occured! Try again!")
 

@@ -22,8 +22,10 @@ class Game():
         self.computer_controlar = False
         self.dice = Dice()
 
-        self.player1 = Player("USER1",  bool)
-        self.player2 = Player(("USER2"),  bool)
+        self.forbidden_face = 1
+
+        self.player1 = Player(str,  bool)
+        self.player2 = Player(str,  bool)
         self.set_playing_now(self.player1)
         # Basically, player2 may be computer in case user decided.
         # However, computer_player object has been added to make the
@@ -37,6 +39,8 @@ class Game():
     def create_player(self, player_amount):
         """Get info from shell.py, fit equavelent players with names"""
         player1_name = input("Enter the first player's name >> ")
+        if player1_name == "":
+            player1_name = "USER1"
         self.player1.set_name(player1_name)
         #  Hold player object temporarily above
 
@@ -82,12 +86,18 @@ class Game():
 
     def console(self, player):
         """Synchronize between players's scores and rolled dice """
+
+        # assert isinstance(player, Player)  # for test purpose
+
         self.print_out_dice(player, self.dice.get_dice())
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
         self.print_score(player)
+        print("dice,in,game",self.dice.get_dice())
+        # self.mock_in_console = self.dice.get_dice()
+        self.set_face( self.dice.get_dice())  # For test purpose.
 
-        if self.dice.get_dice() in (1, 6):
+        if self.dice.get_dice()in (1, 6):
             self.dice.roll_dice()
             return False
 
@@ -193,3 +203,9 @@ class Game():
         """Getter for a boolen variable.
         Help to switching turns."""
         return self.computer_controlar
+
+    def get_face(self):
+        return self.forbidden_face
+
+    def set_face(self, num):
+        self.forbidden_face = num
