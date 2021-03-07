@@ -1,6 +1,11 @@
-"""."""
 # !/usr/bin/env python3
-# pylint: disable=missing-module-docstring
+# -*- coding: utf-8 -*
+
+"""
+
+This controls the intelligence and logic of computer player
+
+"""
 
 
 import random
@@ -28,7 +33,6 @@ class Intelligence():
 
     def act_hard(self, value):
         """Notice that the computer has ability to cheat."""
-        print("value ", value)
         if self.cheat_decison() and value not in (1, 6):
             print("Computer: I think my score gonna be higher now!")
             return True
@@ -41,7 +45,7 @@ class Intelligence():
         return self.act_easy()
 
     def get_inti_decision(self, player, dice_value):
-        """Currying ap  pend to level."""
+        """Currying append to level."""
         if self.level == "normal":
             return self.act_normal(player)
 
@@ -50,5 +54,5 @@ class Intelligence():
         return self.act_easy()
 
     def cheat_decison(self):
-        """."""
+        """Computer decision about cheating."""
         return random.choice(self.orders)

@@ -33,9 +33,8 @@ class TestHistogram(unittest.TestCase):
         self.assertIn(player1.get_name(), output)
         self.assertIn(player2.get_name(), output)
 
-    def test_create_asterisk(self):
+    def test_print_asterisk(self):
         exp = 2
         ast = ' * '
         res = ' *  * '
         self.assertEqual(exp * ast, res)
-

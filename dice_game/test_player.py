@@ -32,6 +32,11 @@ class TestHistogram(unittest.TestCase):
         self.player.change_score(2)
         self.assertTrue(self.player.get_score() + 2)
 
+    def test_set_name(self):
+        name = "new_name"
+        self.player.set_name(name)
+        self.assertTrue(self.player.get_name() == name)
+
     def test_get_score_list(self):
         """Test Player Class."""
         #  test that name returned in both classes are equals.

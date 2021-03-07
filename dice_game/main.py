@@ -11,11 +11,15 @@ Try to win over me, since my default level is easy.
 If you succeed then change the level, but not the hard one! or I will bit yours
 I expect from you to change your name
 to let me know who I play with!!
+
 Otherwise, I call you USER you Loser!
 
 """
 import shell
+import requests
+
 
 if __name__ == '__main__':
+    response = requests.get('https://httpbin.org/ip')
     print(__doc__)
     shell.Shell().cmdloop()

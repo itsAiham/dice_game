@@ -18,6 +18,7 @@ class Highscore():
         """Write highscores in file."""
         try:
             # The following variables to pass Flake8
+            print("name", self.player1.get_name())
             name1 = self.player1.get_name().capitalize()
             score1 = str(self.player1.get_score())
             name2 = self.player2.get_name().capitalize()

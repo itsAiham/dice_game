@@ -42,11 +42,14 @@ class Game():
         if player1_name == "":
             player1_name = "USER1"
         self.player1.set_name(player1_name)
+        self.player2.set_name("Computer")
         #  Hold player object temporarily above
 
         if player_amount == 2:
             print("Created another player")
             player2_name = input("Enter the second player's name >> ")
+            if player2_name == "":
+                player2_name = "USER2"
             self.player2.set_name(player2_name)
 
         else:
@@ -54,6 +57,7 @@ class Game():
             print(self.set_computer_controler(True))
             self.player2 = self.computer_player
 
+        self.score = Highscore(self.player1, self.player2)
         print("Game Starts!\n")
 
     def switcher(self):
@@ -93,11 +97,11 @@ class Game():
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
         self.print_score(player)
-        print("dice,in,game",self.dice.get_dice())
+        print("dice,in,game", self.dice.get_dice())
         # self.mock_in_console = self.dice.get_dice()
-        self.set_face( self.dice.get_dice())  # For test purpose.
+        self.set_face(self.dice.get_dice())  # For test purpose.
 
-        if self.dice.get_dice()in (1, 6):
+        if self.dice.get_dice() in (1, 6):
             self.dice.roll_dice()
             return False
 
@@ -171,7 +175,7 @@ class Game():
         self.score.read_file()
 
     def end_game(self, player):
-        """Print the winner. """
+        """End Game."""
         self.set_game_status(False)
         print("WOW! Congra {} you won the game!". format(player.get_name()))
         self.histogram.print_histogram(self.player1,

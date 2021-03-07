@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+# pylint: disable=missing-module-docstring
 
-
-"""
-
-This controls the intelligence and logic of the whole game
-
-"""
 
 from intelligence import Intelligence
 
@@ -36,7 +31,7 @@ class Player():
         self.name = name
 
     def set_level(self, level):
-        """Set game's level."""
+        """Set computer's level."""
         self.reaction.level = level
 
     def get_name(self):

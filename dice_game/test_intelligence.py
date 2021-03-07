@@ -27,39 +27,35 @@ class TestIntelligenceClass(unittest.TestCase):
 
     def test_act_normal(self):
         """Test act_normal."""
-        self.intelligence.act_normal(self.game.player)
+        # self.intelligence.act_normal(self.game.player)
+        exp = self.intelligence.act_normal(self.game.player)
         # need to be checked !
-        # if self.game.player.get_score() < 10:
-        #     self.assertEqual(self.game.player.reaction.get_inti_decision(
-        #                      self.game.player.get_score(),
-        #                      self.dice.get_dice()), True)
-        # self.intelligence.act_easy()
+        if self.game.player.get_score() < 10:
+            self.assertTrue(self.game.player.reaction)
+
         #  same result!! line 27 return act_easy()
-        self.assertIn(self.game.player.reaction.get_inti_decision(
-                self.game.player.get_score(),
-                self.dice.get_dice()), self.intelligence.orders)
+        self.assertIn(exp, self.intelligence.orders)
 
     def test_act_hard(self):
-        self.intelligence.act_hard(4)
+        exp = self.intelligence.act_hard(self.dice.get_dice())
         if self.intelligence.cheat_decison() and 1 < self.dice.get_dice() > 6:
-            self.assertEqual(self.game.player.reaction.get_inti_decision(
-                             self.game.player.get_score(),
-                             self.dice.get_dice()), True)
+            self.assertTrue(exp)
 
-        elif self.intelligence.cheat_decison():
-            self.assertIn(self.game.player.reaction.get_inti_decision(
-                             self.game.player.get_score(),
-                             self.dice.get_dice()), self.intelligence.orders)
+        # elif self.intelligence.cheat_decison():
+        #     self.assertFalse(exp)
+
+        self.assertIn(exp, self.intelligence.orders)
 
     def test_get_init_decision(self):
-        self.intelligence.get_inti_decision(self.game.player, self.dice.get_dice())
+        self.intelligence.get_inti_decision(self.game.player,
+                                            self.dice.get_dice())
         if self.intelligence.level == 'normal':
             self.assertEqual(self.game.player.reaction.level, "normal")
-            # self.intelligence.act_normal(self.player)
+            self.intelligence.act_normal(self.player)
 
         if self.intelligence.level == 'hard':
             self.assertEqual(self.game.player.reaction.level, "hard")
-            # self.intelligence.act_hard(self.dice.get_dice())
+            self.intelligence.act_hard(self.dice.get_dice())
 
         self.assertEqual(self.game.player.reaction.level, "easy")
         # self.intelligence.act_easy()
