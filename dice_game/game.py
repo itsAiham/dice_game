@@ -146,7 +146,6 @@ class Game():
         if level in levels:
             self.computer_player.set_level(level)
             print("My level now is", level)
-
         else:
             raise ValueError("This kind of level is not available!!")
 
@@ -208,8 +207,14 @@ class Game():
         Help to switching turns."""
         return self.computer_controlar
 
-    def get_face(self):
-        return self.forbidden_face
-
+    # The following two methods helps to chech 
+    # the dice face while playing and exatly 
+    # before the next rollment
+    # do not effect on game, helping in testing
     def set_face(self, num):
+        """This method used for testing purpose."""
         self.forbidden_face = num
+
+    def get_face(self):
+        """This method used for testing purpose."""
+        return self.forbidden_face
