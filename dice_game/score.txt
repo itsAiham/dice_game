@@ -1,0 +1,19 @@
+player name: Kim (score) -> 12
+player name: User2 (score) -> 0
+player name: Anna (score) -> 11
+player name: Adam (score) -> 0
+player name: User1 (score) -> 10
+player name: Computer (score) -> 0
+player name: User1 (score) -> 11
+player name: Computer (score) -> 0
+player name: Sara (score) -> 0
+player name: Computer (score) -> 11
+player name: Nils (score) -> 0
+player name: Kim (score) -> 11
+player name: User1 (score) -> 5
+player name: Computer (score) -> 12
+player name: Aiham (score) -> 10
+player name: Computer (score) -> 0
+player name: Annile (score) -> 11
+player name: Max (score) -> 0
+
