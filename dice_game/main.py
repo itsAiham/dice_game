@@ -16,10 +16,8 @@ Otherwise, I call you USER you Loser!
 
 """
 import shell
-import requests
 
 
 if __name__ == '__main__':
-    response = requests.get('https://httpbin.org/ip')
     print(__doc__)
     shell.Shell().cmdloop()
