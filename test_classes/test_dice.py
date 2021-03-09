@@ -3,7 +3,9 @@
 
 import unittest
 import random
-from dice import Dice
+#import sys
+#sys.path.append('dice_game')
+from dice_game.dice import Dice
 
 
 class TestDiceClass(unittest.TestCase):

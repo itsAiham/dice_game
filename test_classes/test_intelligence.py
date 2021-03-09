@@ -5,10 +5,10 @@
 # import sys
 # import io
 import unittest
-from intelligence import Intelligence
-from player import Player
-from game import Game
-from dice import Dice
+from dice_game.intelligence import Intelligence
+from dice_game.player import Player
+from dice_game.game import Game
+from dice_game.dice import Dice
 
 
 class TestIntelligenceClass(unittest.TestCase):

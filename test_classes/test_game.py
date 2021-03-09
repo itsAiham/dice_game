@@ -8,12 +8,12 @@ from unittest import mock
 
 from unittest.mock import patch, Mock
 from unittest.mock import MagicMock
-from dice import Dice
-from game import Game
+from dice_game.dice import Dice
+from dice_game.game import Game
 # from player import Player
-from player import Player
-from highscore import Highscore
-from histogram import Histogram
+from dice_game.player import Player
+from dice_game.highscore import Highscore
+from dice_game.histogram import Histogram
 
 # import sys, os
 # sys.path.append('C:\\Users\\46737\\Desktop\\Methods_for_Sustainable_Programming\\Exam_2\\game_file')
@@ -190,7 +190,7 @@ class TestGameClass(unittest.TestCase):
         """Test highscore."""
         mock = Mock(spec=Highscore)
         self.assertIsInstance(mock, Highscore)
-        with patch('highscore.Highscore') as fake_obj:
+        with patch('dice_game.highscore.Highscore') as fake_obj:
             mock.read_file()
             fake_obj.asert_called()
 

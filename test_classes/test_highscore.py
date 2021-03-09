@@ -2,9 +2,9 @@
 
 
 import unittest
-from player import Player
-from game import Game
-from highscore import Highscore
+from dice_game.player import Player
+from dice_game.game import Game
+from dice_game.highscore import Highscore
 
 
 class TestHigscore(unittest.TestCase):

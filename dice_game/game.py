@@ -6,10 +6,10 @@
 # pylint: disable=W0201
 
 
-from player import Player
-from dice import Dice
-from highscore import Highscore
-from histogram import Histogram
+from .player import Player
+from .dice import Dice
+from .highscore import Highscore
+from .histogram import Histogram
 
 
 class Game():
@@ -24,8 +24,11 @@ class Game():
 
         self.forbidden_face = 1
 
-        self.player1 = Player(str,  bool)
-        self.player2 = Player(str,  bool)
+        #self.player1 = Player(str,  bool)
+        self.player1 = Player("",  True)
+        #self.player2 = Player(str,  bool)
+        self.player2 = Player("",  True)
+
         self.set_playing_now(self.player1)
         # Basically, player2 may be computer in case user decided.
         # However, computer_player object has been added to make the

@@ -3,7 +3,7 @@
 # pylint: disable=missing-module-docstring
 
 
-from intelligence import Intelligence
+from .intelligence import Intelligence
 
 
 class Player():

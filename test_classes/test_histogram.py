@@ -6,8 +6,8 @@ import unittest
 import sys
 import io
 
-from histogram import Histogram
-from player import Player
+from dice_game.histogram import Histogram
+from dice_game.player import Player
 
 
 class TestHistogram(unittest.TestCase):
