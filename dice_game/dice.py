@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#  pylint: disable=missing-module-docstring
+
+"""Present Die object used in the game."""
 
 import random
 # import os
@@ -18,9 +19,9 @@ class Dice():
         self.rolled_dice = random.randint(self.lowest, self.highest)
 
     def roll_dice(self):
-        """Roll the dice."""
+        """Roll the dice and initialize random value."""
         self.rolled_dice = random.randint(self.lowest, self.highest)
 
     def get_dice(self):
-        """Return the rolled dice value."""
+        """Return the rolled dice face."""
         return self.rolled_dice

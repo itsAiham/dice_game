@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# pylint: disable=missing-module-docstring
 # pylint: disable=R0902
 # pylint: disable=W0622
 # pylint: disable=W0201
 # pylint: disable=E0401
-
+"""
+The instance of game class is created within shell.py.
+After analyzing the input, game object
+reach the equivalent method for processing
+"""
 
 from player import Player
 from dice import Dice
@@ -63,7 +66,9 @@ class Game():
         print("Game Starts!\n")
 
     def switcher(self):
-        """Switch turns between players."""
+        """After considering who is playing now and whether
+        computer-controler true or false, take rule in switching turns
+        between players."""
         if (self.get_computer_controler() and
            self.get_playing_now() == self.player1):
             self.set_playing_now(self.computer_player)
@@ -84,14 +89,15 @@ class Game():
         return self.set_playing_now(self.player1)
 
     def roll(self):
-        """Roll the dice."""
+        """Reached by human players and call another
+        method to make operations depends on die rollments."""
         force_stop = self.console(self.get_playing_now())
 
         if not force_stop and self.get_game_status():
             self.switcher()
 
     def console(self, player):
-        """Synchronize between players's scores and rolled dice """
+        """Synchronize between players's scores and rolled dice."""
         self.print_out_dice(player, self.dice.get_dice())
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
@@ -135,7 +141,7 @@ class Game():
                 break
 
     def cheat(self):
-        """Return the rolled dice"""
+        """Return the rolled dice to reach cheating feture."""
         return self.dice.get_dice()
 
     def check_levels(self, level):
@@ -159,7 +165,7 @@ class Game():
 
     @staticmethod
     def print_out_dice(player, number):
-        """Print out the dice"""
+        """Print out rolled dice."""
         print("{} got:". format(player.get_name()))
         print(" ______")
         print(r"|\______\ ")
@@ -168,12 +174,12 @@ class Game():
         print(r"\|______|"+"\n")
 
     def highscore(self):
-        """Read and print out from highscore file."""
+        """Call method  sprint out from highscore file."""
         self.score.read_file()
 
     def end_game(self, player):
         """End game Class
-        call other methods in turn."""
+        call other methods in turns."""
         self.score = Highscore(self.player1, self.player2)
 
         # self.score.write_highscore()
@@ -184,15 +190,15 @@ class Game():
         self.score.write_file()
 
     def set_game_status(self, bool):
-        """Set the game status"""
+        """Set game status."""
         self.still_going = bool
 
     def get_game_status(self):
-        """Check the game status"""
+        """Check the game status."""
         return self.still_going
 
     def set_playing_now(self, player):
-        """Change object holder to help exchanging players"""
+        """Change object's holder to help exchanging players"""
         self.playing_now = player
 
     def get_playing_now(self):
@@ -201,7 +207,7 @@ class Game():
 
     def set_computer_controler(self, bool):
         """Setter for a boolen variable.
-        Help to switching turns."""
+        Help in switching turns."""
         self.computer_controlar = bool
 
     def get_computer_controler(self):
@@ -214,9 +220,11 @@ class Game():
     # before the next rollment,
     # do not effect the game, helping in testing
     def set_face(self, num):
-        """This method used for testing purpose."""
+        """This method used for testing purpose.
+        Set value in variable to hold dice face before automatic rolling"""
         self.forbidden_face = num
 
     def get_face(self):
-        """This method used for testing purpose."""
+        """This method used for testing purpose.
+        Return dice face before automatic rolling."""
         return self.forbidden_face
