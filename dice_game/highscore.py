@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-"""Write and Read from .txt file."""
+# pylint: disable=E0401
+
+
+"""
+The class accepts instances of players, to be able to save
+scores at the end of the game.
+Player has ability to read score file when script runs
+"""
 
 
 class Highscore():
@@ -10,11 +17,9 @@ class Highscore():
         self.player1 = player1
         self.player2 = player2
         self.path = 'score.txt'
-        # Check to change to json file later on maybe ?
-        # self.json_score = 'highscore.json'
 
     def write_file(self):
-        """Write highscores in file."""
+        """Write highscores in file"""
         try:
             # The following variables to pass Flake8
             name1 = self.player1.get_name().capitalize()
@@ -37,8 +42,7 @@ class Highscore():
 
     @staticmethod
     def read_file():
-        """Read highscore file."""
-        # json_file = json.load(self.json_score)
+        """Read highscore file"""
         try:
             print("\n>>>>>   Score lise :\n")
             with open('score.txt        ', 'r') as score_file:
@@ -58,5 +62,5 @@ class Highscore():
             print("None games saved! System got not players details.")
 
     def get_path(self):
-        """Return path for testing purpose."""
+        """Return path for (testing purpose)."""
         return self.path

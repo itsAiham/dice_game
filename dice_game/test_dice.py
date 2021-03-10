@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# pylint: disable=E0401
+
+"""Test dice file."""
 
 import unittest
 import random
@@ -11,7 +14,7 @@ class TestDiceClass(unittest.TestCase):
 
     def setUp(self):
         """Runs first."""
-        self.faces = [1, 2, 3, 4, 5, 6]
+        self.faces = (1, 2, 3, 4, 5, 6)
 
     def test_init_(self):
         """Test the created instance"""

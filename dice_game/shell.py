@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-# # pylint: disable=missing-module-docstring
-# pylint: disable=E1111
+# pylint: disable=E0401
 
+"""
+Takes input from user. Control the game through
+parse the input and call the equivalent method to do the work.
+"""
 
 import cmd
 from game import Game

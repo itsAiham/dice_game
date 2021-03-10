@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*
 
 """
-
-This controls the intelligence and logic of computer player
-
+Controls the intelligence and logic of computer
+player according to chosen level
 """
 
 

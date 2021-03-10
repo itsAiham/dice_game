@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# pylint: disable=E0401
+
+"""Test player module."""
 
 import unittest
 import random
@@ -8,9 +11,11 @@ from game import Game
 from dice import Dice
 
 
-class TestHistogram(unittest.TestCase):
+class TestPlayer(unittest.TestCase):
+    """Test Histogram Class."""
 
     def setUp(self):
+        """Creating instances at the beginning of tests cases"""
         self.game = Game()
         self.player = Player(str, bool)
         self.score_list = []
@@ -32,6 +37,7 @@ class TestHistogram(unittest.TestCase):
         self.assertTrue(self.player.get_score() + 2)
 
     def test_set_name(self):
+        """Test set/change player name."""
         name = "new_name"
         self.player.set_name(name)
         self.assertTrue(self.player.get_name() == name)

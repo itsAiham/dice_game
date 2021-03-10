@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-# pylint: disable=missing-module-docstring
+# pylint: disable=E0401
 
+"""
+Player Class to control player objects create in game
+"""
 
 from intelligence import Intelligence
 

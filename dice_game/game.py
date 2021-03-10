@@ -4,6 +4,7 @@
 # pylint: disable=R0902
 # pylint: disable=W0622
 # pylint: disable=W0201
+# pylint: disable=E0401
 
 
 from player import Player
@@ -37,7 +38,10 @@ class Game():
         self.histogram = Histogram()
 
     def create_player(self, player_amount):
-        """Get info from shell.py, fit equavelent players with names"""
+        """
+        Get info from shell.py, fit equavelent players with names.
+        Turn computer_controller on/off.
+        """
         player1_name = input("Enter the first player's name >> ")
         if player1_name == "":
             player1_name = "USER1"
@@ -56,8 +60,6 @@ class Game():
             print("Created computer player")
             print(self.set_computer_controler(True))
             self.player2 = self.computer_player
-
-        # self.score = Highscore(self.player1, self.player2)
         print("Game Starts!\n")
 
     def switcher(self):
@@ -90,9 +92,6 @@ class Game():
 
     def console(self, player):
         """Synchronize between players's scores and rolled dice """
-
-        # assert isinstance(player, Player)  # for test purpose
-
         self.print_out_dice(player, self.dice.get_dice())
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
@@ -113,7 +112,7 @@ class Game():
         return True
 
     def computer_turn(self):
-        """Take orders from Intelligence class to control the decison"""
+        """Take orders from Intelligence class to control the decison."""
         print(">>>>> Start Computer turn <<<<<\n")
 
         while self.get_game_status():
@@ -173,8 +172,8 @@ class Game():
         self.score.read_file()
 
     def end_game(self, player):
-        """End Game."""
-        # self.score = Highscore(self.player1, self.player2)
+        """End game Class
+        call other methods in turn."""
         self.score = Highscore(self.player1, self.player2)
 
         # self.score.write_highscore()
@@ -185,7 +184,7 @@ class Game():
         self.score.write_file()
 
     def set_game_status(self, bool):
-        """Check the game status"""
+        """Set the game status"""
         self.still_going = bool
 
     def get_game_status(self):

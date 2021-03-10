@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# pylint: disable=E0401
 
-
-""".
+"""
 
 Welcome In Pig Dice!
 The game is easy. Try to roll the dice and not gitting

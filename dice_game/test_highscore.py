@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+# pylint: disable=E0401
+# pylint: disable=W0201
+# pylint: disable=C0411
 
+"""Test highscire module."""
 
 import io
 import sys

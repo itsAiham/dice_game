@@ -1,14 +1,34 @@
-#!/usr/bin/env python3
-#!/usr/bin/env make
+
+
 
 venv:
-	[ -d .venv ] || $(PYTHON) -m venv .venv
-	@printf "Now activate the Python virtual environment.\n"
-	@printf "On Unix and Mac, do:\n"
-	@printf ". .venv/bin/activate\n"
-	@printf "On Windows (bash terminal), do:\n"
-	@printf ". .venv/Scripts/activate\n"
-	@printf "Type 'deactivate' to deactivate.\n"
+	@printf "Welcomce in make File!"
 
-start:
-	$(PYTHON) main.py
+coverage:
+	coverage run -m unittest discover . "test_*.py"
+	coverage report -m
+
+html:
+	coverage html
+
+pylint:
+	pylint main.py
+	pylint game.py
+	pylint dice.py
+	pylint histogram.py
+	pylint highscore.py
+	pylint player.py
+	pylint shell.py
+	pylint test_dice.py
+	pylint test_game.py
+	pylint test_highscore.py
+	pylint test_histogram.py
+	pylint test_intelligence.py
+	pylint test_player.py
+
+
+flake8:
+	flake8
+
+test: flake8 pylint
+

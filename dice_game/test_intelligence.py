@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# pylint: disable=E0401
+# pylint: disable=C0116
+
+"""Test intelligence module."""
 
 import unittest
 from unittest.mock import patch, Mock
@@ -37,6 +41,7 @@ class TestIntelligenceClass(unittest.TestCase):
             fake_obj.asert_called()
 
     def test_act_hard(self):
+        """Test act-hard method."""
         exp = self.intelligence.act_hard(self.dice.get_dice())
         if self.intelligence.cheat_decison() and 1 < self.dice.get_dice() > 6:
             self.assertTrue(exp)
@@ -47,7 +52,7 @@ class TestIntelligenceClass(unittest.TestCase):
         """Teset get_initelligence_dicision."""
         if self.intelligence.level == 'normal':
             self.assertEqual(self.game.player.reaction.level, "normal")
-            self.intelligence.act_normal(self.player)
+            self.intelligence.act_normal(self.game.player)
 
         if self.intelligence.level == 'hard':
             self.assertEqual(self.game.player.reaction.level, "hard")
@@ -56,17 +61,6 @@ class TestIntelligenceClass(unittest.TestCase):
         self.assertEqual(self.game.player.reaction.level, "easy")
 
     def test_cheat_decision(self):
+        """Test cheat-decision."""
         res = self.intelligence.cheat_decison()
         self.assertIn(res, self.intelligence.orders)
-
-        # elif self.intelligence.cheat_decison():
-        #     computer_saying = "bst -->  Computer CHEATS!!"
-        #     catch_output = io.StringIO()
-        #     sys.stdout = catch_output
-        #     exp11 = self.intelligence.act_hard(6)
-        #     sys.stdout = sys.__stdout__
-        #     output = catch_output.getvalue()
-        #     self.assertIn(output, computer_saying)
-        #     self.assertFalse(exp11)
-
-        # self.assertIn("I'm NOT a cheater", exp11)
