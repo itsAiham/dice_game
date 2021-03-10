@@ -3,7 +3,7 @@
 # pylint: disable=E0401
 
 """
-Player Class to control player objects create in game
+Player Class to control player objects create in game.
 """
 
 from intelligence import Intelligence
@@ -22,7 +22,7 @@ class Player():
         self.decision = decision
 
     def change_score(self, score):
-        """Change player score."""
+        """Change player score according to dice dance."""
         if score not in (1, 6):
             self.score += score
         else:

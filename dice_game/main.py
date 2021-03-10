@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # pylint: disable=E0401
+# pylint: disable=E0401
 
 """
 
 Welcome In Pig Dice!
+
 The game is easy. Try to roll the dice and not gitting
 values 1 and 6, or you lose your score and turn.
-Try to win over me, since my default level is easy.
-If you succeed then change the level, but not the hard one! or I will bit yours
-I expect from you to change your name
-to let me know who I play with!!
 
-Otherwise, I call you USER you Loser!
+To start the game,
 
+    Enter 'start 1' to play against the computer
+          'start 2' to play with two players.
+
+If you choose to play against the computer, you are able to change the
+level when ever you want.
+
+I expect to change your name by entering 'name (Your Name)'
+
+Prese help or ? to get more about commands
 """
 import shell
 

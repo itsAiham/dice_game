@@ -13,10 +13,10 @@ import random
 class Intelligence():
     """Intelligence Class."""
 
-    orders = [True, False, True]
+    orders = (True, False, True)
 
     def __init__(self, level):
-        """."""
+        """Initializing levels"""
         self.level = level
 
     def act_easy(self):
@@ -44,7 +44,7 @@ class Intelligence():
         return self.act_easy()
 
     def get_inti_decision(self, player, dice_value):
-        """Currying append to level."""
+        """Returning a method using currying approach to set level."""
         if self.level == "normal":
             return self.act_normal(player)
 
@@ -53,5 +53,6 @@ class Intelligence():
         return self.act_easy()
 
     def cheat_decison(self):
-        """Computer decision about cheating."""
+        """Computer decision about cheating, which is random choice
+        using same boolean tuple."""
         return random.choice(self.orders)

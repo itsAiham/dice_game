@@ -4,7 +4,7 @@
 
 """
 Takes input from user. Control the game through
-parse the input and call the equivalent method to do the work.
+parse the input and call the equivalent method to operate the work.
 """
 
 import cmd
@@ -99,7 +99,7 @@ class Shell(cmd.Cmd):
         """Print orders' format."""
         print("\nstart _: Enter 'start' + 'space' + '1' or '2' to"
               "start or restart a new game.")
-        print("name _      : 'name' + 'the wnated name' to"
+        print("name _      : 'name' + 'your name' to"
               " change the current player name.")
         print("roll        : Roll the dice.")
         print("score       : Print out highscores.")

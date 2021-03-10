@@ -4,7 +4,7 @@
 # pylint: disable=W0201
 # pylint: disable=C0411
 
-"""Test highscire module."""
+"""Test highscore module."""
 
 import io
 import sys

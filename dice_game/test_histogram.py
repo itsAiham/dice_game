@@ -16,7 +16,8 @@ class TestHistogram(unittest.TestCase):
     """Test Histogram Class."""
 
     def test_print_histogram(self):
-        """Test print_histogram by catching
+        """
+        Testing print_histogram by catching
         output and comparing it
         """
         histogram = Histogram()
@@ -38,7 +39,7 @@ class TestHistogram(unittest.TestCase):
         self.assertIn(player2.get_name(), output)
 
     def test_print_asterisk(self):
-        """Test print_asterisk"""
+        """Test print_asterisk method."""
         exp = 2
         ast = ' * '
         res = ' *  * '

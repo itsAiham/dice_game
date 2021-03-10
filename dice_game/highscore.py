@@ -19,7 +19,8 @@ class Highscore():
         self.path = 'score.txt'
 
     def write_file(self):
-        """Write highscores in file"""
+        """Initialize players' name and score to write them in txt file
+        when game ends."""
         try:
             # The following variables to pass Flake8
             name1 = self.player1.get_name().capitalize()
@@ -62,5 +63,5 @@ class Highscore():
             print("None games saved! System got not players details.")
 
     def get_path(self):
-        """Return path for (testing purpose)."""
+        """Return file's path (testing purpose)."""
         return self.path

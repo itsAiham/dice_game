@@ -4,7 +4,7 @@
 """
 Histogram Class: Recive players lists and organize printable
 style considers of asterisks, each printed row equavle
-the face that player got it his turn.
+the face that player got when he rolled dice.
 """
 
 
