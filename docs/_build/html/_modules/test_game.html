@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>test_game &mdash; Dice Game  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Dice Game
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dice_game.html">Game Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dice_game.html#test-modules">Test Modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../univ.html">Kristianstad’s university</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dice Game</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>test_game</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for test_game</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*</span>
+<span class="c1"># pylint: disable=E0401</span>
+
+<span class="sd">&quot;&quot;&quot;Test game module.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span><span class="p">,</span> <span class="n">Mock</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span>
+<span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
+<span class="kn">from</span> <span class="nn">game</span> <span class="kn">import</span> <span class="n">Game</span>
+<span class="kn">from</span> <span class="nn">player</span> <span class="kn">import</span> <span class="n">Player</span>
+<span class="kn">from</span> <span class="nn">highscore</span> <span class="kn">import</span> <span class="n">Highscore</span>
+<span class="kn">from</span> <span class="nn">histogram</span> <span class="kn">import</span> <span class="n">Histogram</span>
+
+
+<div class="viewcode-block" id="TestGameClass"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass">[docs]</a><span class="k">class</span> <span class="nc">TestGameClass</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test Game Class.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TestGameClass.setUp"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_game_status</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player1</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player2</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">highscore</span> <span class="o">=</span> <span class="n">Highscore</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_create_player"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_create_player">[docs]</a>    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;builtins.input&#39;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_create_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test create_player.&quot;&quot;&quot;</span>
+        <span class="c1"># Test with one player name and no name entered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">create_player</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1_name</span> <span class="o">=</span> <span class="n">mock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="s2">&quot;USER1&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_create_player1"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_create_player1">[docs]</a>    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;builtins.input&#39;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_create_player1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test create_player.&quot;&quot;&quot;</span>
+        <span class="c1"># Test with one player name and no name entered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">create_player</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1_name</span> <span class="o">=</span> <span class="n">mock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player2</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="s2">&quot;Computer&quot;</span><span class="p">)</span>
+        <span class="c1"># Check that computer_controler is on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_computer_controler</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_create_player2"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_create_player2">[docs]</a>    <span class="nd">@patch</span><span class="p">(</span><span class="s1">&#39;builtins.input&#39;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_create_player2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mock</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test create_player.&quot;&quot;&quot;</span>
+        <span class="c1"># Test with Two players name and no name entered</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">create_player</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1_name</span> <span class="o">=</span> <span class="n">mock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player2_name</span> <span class="o">=</span> <span class="n">mock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="s2">&quot;USER1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player2</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="s2">&quot;USER2&quot;</span><span class="p">)</span>
+        <span class="c1"># Check that computer_controler is off</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_computer_controler</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_switcher"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_switcher">[docs]</a>    <span class="k">def</span> <span class="nf">test_switcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test Switcher.&quot;&quot;&quot;</span>
+        <span class="c1"># Testing switcher</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_game_status</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">before_switching</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">switcher</span><span class="p">()</span>
+        <span class="n">after_switching</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="n">before_switching</span><span class="p">,</span> <span class="n">after_switching</span><span class="p">)</span>
+
+        <span class="c1"># another test and assuming it is ccomputer&#39;s turn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_game_status</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_playing_now</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">switcher</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_roll"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_roll">[docs]</a>    <span class="k">def</span> <span class="nf">test_roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test roll.&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">roll</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_face</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">res</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_console"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_console">[docs]</a>    <span class="k">def</span> <span class="nf">test_console</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test console.&quot;&quot;&quot;</span>
+        <span class="n">ret_bool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">console</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_face</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="n">ret_bool</span><span class="p">)</span>
+
+        <span class="c1"># Test that the game ends when the currently player</span>
+        <span class="c1"># reached the winning score</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">()</span><span class="o">.</span><span class="n">get_score</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">win_pig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_game_status</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">end_game</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_computer_turn"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_computer_turn">[docs]</a>    <span class="k">def</span> <span class="nf">test_computer_turn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test computer_turn.&quot;&quot;&quot;</span>
+        <span class="c1"># Testing prints message:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">computer_turn</span><span class="p">()</span>
+        <span class="c1"># Most output from method inculds :</span>
+        <span class="n">printing_res</span> <span class="o">=</span> <span class="s1">&#39; Computer &#39;</span>
+
+        <span class="n">catch_output</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">catch_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">computer_turn</span><span class="p">()</span>
+
+        <span class="c1"># print player&#39;s name and score and catch it.</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">catch_output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">printing_res</span><span class="p">),</span> <span class="n">output</span><span class="p">)</span>
+
+        <span class="c1"># Testing switcher() be called by computer_player</span>
+        <span class="c1">#   when it decide stops playing</span>
+        <span class="n">test_reaction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span><span class="o">.</span><span class="n">reaction</span><span class="o">.</span><span class="n">get_inti_decision</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">test_reaction</span><span class="p">:</span>
+            <span class="n">mock_com_player</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">Game</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">mock_com_player</span><span class="p">,</span> <span class="n">Game</span><span class="p">)</span>
+            <span class="n">mock_com_player</span><span class="o">.</span><span class="n">switcher</span><span class="p">()</span>
+            <span class="n">mock_com_player</span><span class="o">.</span><span class="n">switcher</span><span class="o">.</span><span class="n">assert_called</span><span class="p">()</span>
+
+        <span class="c1"># If game force stop, call switcher</span>
+        <span class="n">mock_com_player2</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">Game</span><span class="p">)</span>
+        <span class="n">game_return</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">console</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">game_return</span><span class="p">:</span>
+            <span class="n">mock_com_player2</span><span class="o">.</span><span class="n">switcher</span><span class="p">()</span>
+            <span class="n">mock_com_player2</span><span class="o">.</span><span class="n">switcher</span><span class="o">.</span><span class="n">assert_called</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_cheat"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_cheat">[docs]</a>    <span class="k">def</span> <span class="nf">test_cheat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test cheat method.&quot;&quot;&quot;</span>
+        <span class="n">cheat_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">cheat</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">cheat_method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">get_dice</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_highscore"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_highscore">[docs]</a>    <span class="k">def</span> <span class="nf">test_highscore</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test highscore method.&quot;&quot;&quot;</span>
+        <span class="n">mock</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">Highscore</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">Highscore</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s1">&#39;highscore.Highscore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fake_obj</span><span class="p">:</span>
+            <span class="n">mock</span><span class="o">.</span><span class="n">read_file</span><span class="p">()</span>
+            <span class="n">fake_obj</span><span class="o">.</span><span class="n">asert_called</span><span class="p">()</span>
+
+        <span class="c1"># another test</span>
+        <span class="n">read_file_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">highscore</span><span class="o">.</span><span class="n">read_file</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">read_file_method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">highscore</span><span class="o">.</span><span class="n">read_file</span><span class="p">())</span>
+        <span class="c1"># Test The Instance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">highscore</span><span class="p">,</span> <span class="n">Highscore</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_change_name"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_change_name">[docs]</a>    <span class="k">def</span> <span class="nf">test_change_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test changing name feature.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">change_name</span><span class="p">(</span><span class="s2">&quot;new_name&quot;</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">playing_now</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">res</span> <span class="o">==</span> <span class="s2">&quot;new_name&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_end_game"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_end_game">[docs]</a>    <span class="k">def</span> <span class="nf">test_end_game</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test end_game.&quot;&quot;&quot;</span>
+        <span class="n">histogram</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">()</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">Highscore</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_game_status</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">histogram</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">)</span>
+        <span class="c1"># self.assertFalse(self.game.get_game_status())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">Highscore</span><span class="p">)</span>
+
+        <span class="c1">#   The folling two lines work find to test</span>
+        <span class="c1">#   the the method change-game.status to false</span>
+        <span class="c1">#     exp = self.player1</span>
+        <span class="c1">#     self.game.end_game(exp)</span>
+        <span class="c1"># However;</span>
+        <span class="c1"># The followign method-call raise an error</span>
+        <span class="c1">#  and may need another tests typ!</span>
+        <span class="c1"># score.write_file()    &lt;-----</span>
+        <span class="n">highscore</span> <span class="o">=</span> <span class="n">Highscore</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player2</span><span class="p">)</span>
+        <span class="n">highscore</span><span class="o">.</span><span class="n">write_file</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;write_file&#39;</span><span class="p">)</span>
+        <span class="n">highscore</span><span class="o">.</span><span class="n">write_file</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_check_levels"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_check_levels">[docs]</a>    <span class="k">def</span> <span class="nf">test_check_levels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test check_levels.&quot;&quot;&quot;</span>
+        <span class="c1"># assuming easy level passed:</span>
+        <span class="n">passed_level</span> <span class="o">=</span> <span class="s2">&quot;easy&quot;</span>
+        <span class="n">levels_list</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;easy&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">check_levels</span><span class="p">(</span><span class="n">passed_level</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">passed_level</span> <span class="ow">in</span> <span class="n">levels_list</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">computer_player</span><span class="o">.</span><span class="n">reaction</span><span class="o">.</span><span class="n">level</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">passed_level</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_print_score"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_print_score">[docs]</a>    <span class="k">def</span> <span class="nf">test_print_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test print_score.&quot;&quot;&quot;</span>
+        <span class="n">name_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="n">score_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_score</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">name_res</span> <span class="ow">and</span> <span class="n">score_res</span>
+
+        <span class="n">catch_output</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">catch_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">print_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="p">)</span>
+        <span class="c1"># print player&#39;s name and score and catch it.</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">catch_output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">output</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_print_out_dice"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_print_out_dice">[docs]</a>    <span class="k">def</span> <span class="nf">test_print_out_dice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test print_out_dice.&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="o">.</span><span class="n">get_name</span><span class="p">())</span>
+
+        <span class="n">catch_output</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">catch_output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">print_out_dice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="c1"># print cube out and catch it.</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">__stdout__</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">catch_output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_get_playing_now"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_get_playing_now">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_playing_now</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test set And get_playing_now.&quot;&quot;&quot;</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_playing_now</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_playing_now</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">exp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_get_game_status"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_get_game_status">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_game_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test get_game_status.&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_game_status</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_set_cmputer_controler"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_set_cmputer_controler">[docs]</a>    <span class="k">def</span> <span class="nf">test_set_cmputer_controler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test set_computer_controler.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_computer_controler</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">computer_controlar</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_get_computer_controler"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_get_computer_controler">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_computer_controler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test get_computer_controler.&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_computer_controler</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="TestGameClass.test_set_face"><a class="viewcode-back" href="../dice_game.html#test_game.TestGameClass.test_set_face">[docs]</a>    <span class="k">def</span> <span class="nf">test_set_face</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test set_face.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">set_face</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">get_face</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kristianstad&#39;s University.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

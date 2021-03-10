@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>test_intelligence &mdash; Dice Game  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Dice Game
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dice_game.html">Game Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dice_game.html#test-modules">Test Modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../univ.html">Kristianstad’s university</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dice Game</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>test_intelligence</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for test_intelligence</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># pylint: disable=E0401</span>
+<span class="c1"># pylint: disable=C0116</span>
+
+<span class="sd">&quot;&quot;&quot;Test intelligence module.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">patch</span><span class="p">,</span> <span class="n">Mock</span>
+<span class="kn">from</span> <span class="nn">intelligence</span> <span class="kn">import</span> <span class="n">Intelligence</span>
+<span class="kn">from</span> <span class="nn">player</span> <span class="kn">import</span> <span class="n">Player</span>
+<span class="kn">from</span> <span class="nn">game</span> <span class="kn">import</span> <span class="n">Game</span>
+<span class="kn">from</span> <span class="nn">dice</span> <span class="kn">import</span> <span class="n">Dice</span>
+
+
+<div class="viewcode-block" id="TestIntelligenceClass"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass">[docs]</a><span class="k">class</span> <span class="nc">TestIntelligenceClass</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test Histogram Class.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TestIntelligenceClass.setUp"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dice</span> <span class="o">=</span> <span class="n">Dice</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span> <span class="o">=</span> <span class="n">Intelligence</span><span class="p">(</span><span class="s2">&quot;easy&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">Player</span><span class="p">(</span><span class="s2">&quot;intell_class&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestIntelligenceClass.test_act_easy"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.test_act_easy">[docs]</a>    <span class="k">def</span> <span class="nf">test_act_easy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test act_easy.&quot;&quot;&quot;</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">act_easy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">orders</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestIntelligenceClass.test_act_normal"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.test_act_normal">[docs]</a>    <span class="k">def</span> <span class="nf">test_act_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test act_normal.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">act_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">get_score</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">win_pig</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">reaction</span><span class="p">)</span>
+
+        <span class="n">mock</span> <span class="o">=</span> <span class="n">Mock</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">Intelligence</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIsInstance</span><span class="p">(</span><span class="n">mock</span><span class="p">,</span> <span class="n">Intelligence</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s1">&#39;intelligence.Intelligence&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fake_obj</span><span class="p">:</span>
+            <span class="n">mock</span><span class="o">.</span><span class="n">act_easy</span><span class="p">()</span>
+            <span class="n">fake_obj</span><span class="o">.</span><span class="n">asert_called</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="TestIntelligenceClass.test_act_hard"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.test_act_hard">[docs]</a>    <span class="k">def</span> <span class="nf">test_act_hard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test act-hard method.&quot;&quot;&quot;</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">act_hard</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">get_dice</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">cheat_decison</span><span class="p">()</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">get_dice</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">orders</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestIntelligenceClass.test_get_init_decision"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.test_get_init_decision">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_init_decision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Teset get_initelligence_dicision.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;normal&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">reaction</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="s2">&quot;normal&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">act_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;hard&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">reaction</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="s2">&quot;hard&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">act_hard</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dice</span><span class="o">.</span><span class="n">get_dice</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">reaction</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="s2">&quot;easy&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestIntelligenceClass.test_cheat_decision"><a class="viewcode-back" href="../dice_game.html#test_intelligence.TestIntelligenceClass.test_cheat_decision">[docs]</a>    <span class="k">def</span> <span class="nf">test_cheat_decision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Test cheat-decision.&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">cheat_decison</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intelligence</span><span class="o">.</span><span class="n">orders</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kristianstad&#39;s University.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

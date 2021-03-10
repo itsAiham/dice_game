@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Game Modules &mdash; Dice Game  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kristianstad’s university" href="univ.html" />
+    <link rel="prev" title="Welcome to Dice Game’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dice Game
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Game Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-dice">dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-game">game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-highscore">highscore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-histogram">histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-intelligence">intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-player">player</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-shell">shell</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#test-modules">Test Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_dice">test_dice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_game">test_game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_highscore">test_highscore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_histogram">test_histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_intelligence">test_intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-test_player">test_player</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="univ.html">Kristianstad’s university</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dice Game</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Game Modules</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/dice_game.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="game-modules">
+<span id="docum"></span><h1>Game Modules<a class="headerlink" href="#game-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-dice">
+<span id="dice"></span><h2>dice<a class="headerlink" href="#module-dice" title="Permalink to this headline">¶</a></h2>
+<p>Present Die object used in the game.</p>
+<dl class="py class">
+<dt id="dice.Dice">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">dice.</span></code><code class="sig-name descname"><span class="pre">Dice</span></code><a class="reference internal" href="_modules/dice.html#Dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dice.Dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Dice Class.</p>
+<dl class="py method">
+<dt id="dice.Dice.get_dice">
+<code class="sig-name descname"><span class="pre">get_dice</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dice.html#Dice.get_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dice.Dice.get_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rolled dice face.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dice.Dice.roll_dice">
+<code class="sig-name descname"><span class="pre">roll_dice</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dice.html#Dice.roll_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dice.Dice.roll_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roll the dice and initialize random value.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-game">
+<span id="game"></span><h2>game<a class="headerlink" href="#module-game" title="Permalink to this headline">¶</a></h2>
+<p>The instance of game class is created within shell.py.
+After analyzing the input, game object
+reach the equivalent method for processing</p>
+<dl class="py class">
+<dt id="game.Game">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">game.</span></code><code class="sig-name descname"><span class="pre">Game</span></code><a class="reference internal" href="_modules/game.html#Game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Game Class.</p>
+<dl class="py method">
+<dt id="game.Game.change_name">
+<code class="sig-name descname"><span class="pre">change_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.change_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.change_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change player name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.cheat">
+<code class="sig-name descname"><span class="pre">cheat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.cheat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.cheat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rolled dice to reach cheating feture.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.check_levels">
+<code class="sig-name descname"><span class="pre">check_levels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.check_levels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.check_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the entered level is valid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.computer_turn">
+<code class="sig-name descname"><span class="pre">computer_turn</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.computer_turn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.computer_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take orders from Intelligence class to control the decison.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.console">
+<code class="sig-name descname"><span class="pre">console</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.console"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.console" title="Permalink to this definition">¶</a></dt>
+<dd><p>Synchronize between players’s scores and rolled dice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.create_player">
+<code class="sig-name descname"><span class="pre">create_player</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.create_player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.create_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info from shell.py, fit equavelent players with names.
+Turn computer_controller on/off.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.end_game">
+<code class="sig-name descname"><span class="pre">end_game</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.end_game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.end_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>End game Class
+call other methods in turns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.get_computer_controler">
+<code class="sig-name descname"><span class="pre">get_computer_controler</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_computer_controler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_computer_controler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter for a boolen variable.
+Help to switching turns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.get_face">
+<code class="sig-name descname"><span class="pre">get_face</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_face"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method used for testing purpose.
+Return dice face before automatic rolling.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.get_game_status">
+<code class="sig-name descname"><span class="pre">get_game_status</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_game_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_game_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the game status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.get_playing_now">
+<code class="sig-name descname"><span class="pre">get_playing_now</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_playing_now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_playing_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently player.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.highscore">
+<code class="sig-name descname"><span class="pre">highscore</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.highscore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.highscore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call method  sprint out from highscore file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.print_out_dice">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">print_out_dice</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.print_out_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.print_out_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out rolled dice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.print_score">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">print_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.print_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.print_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out player score and name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.roll">
+<code class="sig-name descname"><span class="pre">roll</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reached by human players and call another
+method to make operations depends on die rollments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.set_computer_controler">
+<code class="sig-name descname"><span class="pre">set_computer_controler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.set_computer_controler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.set_computer_controler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter for a boolen variable.
+Help in switching turns.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.set_face">
+<code class="sig-name descname"><span class="pre">set_face</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.set_face"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.set_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method used for testing purpose.
+Set value in variable to hold dice face before automatic rolling</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.set_game_status">
+<code class="sig-name descname"><span class="pre">set_game_status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.set_game_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.set_game_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set game status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.set_playing_now">
+<code class="sig-name descname"><span class="pre">set_playing_now</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.set_playing_now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.set_playing_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change object’s holder to help exchanging players</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="game.Game.still_going">
+<code class="sig-name descname"><span class="pre">still_going</span></code><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#game.Game.still_going" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="game.Game.switcher">
+<code class="sig-name descname"><span class="pre">switcher</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.switcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.switcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>After considering who is playing now and whether
+computer-controler true or false, take rule in switching turns
+between players.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="game.Game.win_pig">
+<code class="sig-name descname"><span class="pre">win_pig</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#game.Game.win_pig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-highscore">
+<span id="highscore"></span><h2>highscore<a class="headerlink" href="#module-highscore" title="Permalink to this headline">¶</a></h2>
+<p>The class accepts instances of players, to be able to save
+scores at the end of the game.
+Player has ability to read score file when script runs</p>
+<dl class="py class">
+<dt id="highscore.Highscore">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">highscore.</span></code><code class="sig-name descname"><span class="pre">Highscore</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/highscore.html#Highscore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#highscore.Highscore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Highscore Class.</p>
+<dl class="py method">
+<dt id="highscore.Highscore.get_path">
+<code class="sig-name descname"><span class="pre">get_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/highscore.html#Highscore.get_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#highscore.Highscore.get_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return file’s path (testing purpose).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="highscore.Highscore.read_file">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">read_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/highscore.html#Highscore.read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#highscore.Highscore.read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read highscore file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="highscore.Highscore.write_file">
+<code class="sig-name descname"><span class="pre">write_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/highscore.html#Highscore.write_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#highscore.Highscore.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize players’ name and score to write them in txt file
+when game ends.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-histogram">
+<span id="histogram"></span><h2>histogram<a class="headerlink" href="#module-histogram" title="Permalink to this headline">¶</a></h2>
+<p>Histogram Class: Recive players lists and organize printable
+style considers of asterisks, each printed row equavle
+the face that player got when he rolled dice.</p>
+<dl class="py class">
+<dt id="histogram.Histogram">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">histogram.</span></code><code class="sig-name descname"><span class="pre">Histogram</span></code><a class="reference internal" href="_modules/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#histogram.Histogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Histogram Class.</p>
+<dl class="py method">
+<dt id="histogram.Histogram.print_asterisk">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">print_asterisk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histogram.html#Histogram.print_asterisk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#histogram.Histogram.print_asterisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the equavelent asterisks in player list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="histogram.Histogram.print_histogram">
+<code class="sig-name descname"><span class="pre">print_histogram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/histogram.html#Histogram.print_histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#histogram.Histogram.print_histogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print Histogram and sending players lists to
+another method to organize asterisks style.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-intelligence">
+<span id="intelligence"></span><h2>intelligence<a class="headerlink" href="#module-intelligence" title="Permalink to this headline">¶</a></h2>
+<p>Controls the intelligence and logic of computer
+player according to chosen level</p>
+<dl class="py class">
+<dt id="intelligence.Intelligence">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">intelligence.</span></code><code class="sig-name descname"><span class="pre">Intelligence</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Intelligence Class.</p>
+<dl class="py method">
+<dt id="intelligence.Intelligence.act_easy">
+<code class="sig-name descname"><span class="pre">act_easy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence.act_easy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence.act_easy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return decision as an easy level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="intelligence.Intelligence.act_hard">
+<code class="sig-name descname"><span class="pre">act_hard</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence.act_hard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence.act_hard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notice that the computer has ability to cheat.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="intelligence.Intelligence.act_normal">
+<code class="sig-name descname"><span class="pre">act_normal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence.act_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence.act_normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control decision when level is Normal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="intelligence.Intelligence.cheat_decison">
+<code class="sig-name descname"><span class="pre">cheat_decison</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence.cheat_decison"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence.cheat_decison" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computer decision about cheating, which is random choice
+using same boolean tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="intelligence.Intelligence.get_inti_decision">
+<code class="sig-name descname"><span class="pre">get_inti_decision</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dice_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/intelligence.html#Intelligence.get_inti_decision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#intelligence.Intelligence.get_inti_decision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returning a method using currying approach to set level.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="intelligence.Intelligence.orders">
+<code class="sig-name descname"><span class="pre">orders</span></code><em class="property"> <span class="pre">=</span> <span class="pre">(True,</span> <span class="pre">False,</span> <span class="pre">True)</span></em><a class="headerlink" href="#intelligence.Intelligence.orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-player">
+<span id="player"></span><h2>player<a class="headerlink" href="#module-player" title="Permalink to this headline">¶</a></h2>
+<p>Player Class to control player objects create in game.</p>
+<dl class="py class">
+<dt id="player.Player">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">player.</span></code><code class="sig-name descname"><span class="pre">Player</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decision</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Player Class.</p>
+<dl class="py method">
+<dt id="player.Player.change_score">
+<code class="sig-name descname"><span class="pre">change_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.change_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.change_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change player score according to dice dance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.get_name">
+<code class="sig-name descname"><span class="pre">get_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.get_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return player name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.get_score">
+<code class="sig-name descname"><span class="pre">get_score</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.get_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.get_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return player score.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.get_score_list">
+<code class="sig-name descname"><span class="pre">get_score_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.get_score_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.get_score_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>. Initialisation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="player.Player.reaction">
+<code class="sig-name descname"><span class="pre">reaction</span></code><em class="property"> <span class="pre">=</span> <span class="pre">&lt;intelligence.Intelligence</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#player.Player.reaction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.set_level">
+<code class="sig-name descname"><span class="pre">set_level</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.set_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.set_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set computer’s level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.set_name">
+<code class="sig-name descname"><span class="pre">set_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.set_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change plyer name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="player.Player.set_score_list">
+<code class="sig-name descname"><span class="pre">set_score_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/player.html#Player.set_score_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#player.Player.set_score_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>. Initialisation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-shell">
+<span id="shell"></span><h2>shell<a class="headerlink" href="#module-shell" title="Permalink to this headline">¶</a></h2>
+<p>Takes input from user. Control the game through
+parse the input and call the equivalent method to operate the work.</p>
+<dl class="py class">
+<dt id="shell.Shell">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">shell.</span></code><code class="sig-name descname"><span class="pre">Shell</span></code><a class="reference internal" href="_modules/shell.html#Shell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">cmd.Cmd</span></code></p>
+<p>Shell class.</p>
+<dl class="py attribute">
+<dt id="shell.Shell.computer_control">
+<code class="sig-name descname"><span class="pre">computer_control</span></code><a class="headerlink" href="#shell.Shell.computer_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.default">
+<code class="sig-name descname"><span class="pre">default</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default putput.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_EOF">
+<code class="sig-name descname"><span class="pre">do_EOF</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_EOF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_EOF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leave the game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_cheat">
+<code class="sig-name descname"><span class="pre">do_cheat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_cheat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_cheat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the upcoming value of the dice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_end">
+<code class="sig-name descname"><span class="pre">do_end</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>End the game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_exit">
+<code class="sig-name descname"><span class="pre">do_exit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_exit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leave the game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_help">
+<code class="sig-name descname"><span class="pre">do_help</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print orders’ format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_level">
+<code class="sig-name descname"><span class="pre">do_level</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the game’s level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_name">
+<code class="sig-name descname"><span class="pre">do_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change player name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_pass">
+<code class="sig-name descname"><span class="pre">do_pass</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_pass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_pass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hold turn.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_q">
+<code class="sig-name descname"><span class="pre">do_q</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_q"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leave the game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_roll">
+<code class="sig-name descname"><span class="pre">do_roll</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Roll the dice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_score">
+<code class="sig-name descname"><span class="pre">do_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read from highscore file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="shell.Shell.do_start">
+<code class="sig-name descname"><span class="pre">do_start</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/shell.html#Shell.do_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shell.Shell.do_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Game starting.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="shell.Shell.intro">
+<code class="sig-name descname"><span class="pre">intro</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'Enter</span> <span class="pre">help</span> <span class="pre">or</span> <span class="pre">?</span> <span class="pre">to</span> <span class="pre">get</span> <span class="pre">the</span> <span class="pre">words</span> <span class="pre">that</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">used.\n'</span></em><a class="headerlink" href="#shell.Shell.intro" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="shell.Shell.prompt">
+<code class="sig-name descname"><span class="pre">prompt</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'(game):</span> <span class="pre">'</span></em><a class="headerlink" href="#shell.Shell.prompt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="test-modules">
+<h1>Test Modules<a class="headerlink" href="#test-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-test_dice">
+<span id="test-dice"></span><h2>test_dice<a class="headerlink" href="#module-test_dice" title="Permalink to this headline">¶</a></h2>
+<p>Test dice file.</p>
+<dl class="py class">
+<dt id="test_dice.TestDiceClass">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_dice.</span></code><code class="sig-name descname"><span class="pre">TestDiceClass</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_dice.html#TestDiceClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_dice.TestDiceClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Dice class Test</p>
+<dl class="py method">
+<dt id="test_dice.TestDiceClass.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_dice.html#TestDiceClass.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_dice.TestDiceClass.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs first.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_dice.TestDiceClass.test_get_dice">
+<code class="sig-name descname"><span class="pre">test_get_dice</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_dice.html#TestDiceClass.test_get_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_dice.TestDiceClass.test_get_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing the returned value from rolling a die</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_dice.TestDiceClass.test_init_">
+<code class="sig-name descname"><span class="pre">test_init_</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_dice.html#TestDiceClass.test_init_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_dice.TestDiceClass.test_init_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the created instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_dice.TestDiceClass.test_roll_dice">
+<code class="sig-name descname"><span class="pre">test_roll_dice</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_dice.html#TestDiceClass.test_roll_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_dice.TestDiceClass.test_roll_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test that the rolled value is in the list above</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_game">
+<span id="test-game"></span><h2>test_game<a class="headerlink" href="#module-test_game" title="Permalink to this headline">¶</a></h2>
+<p>Test game module.</p>
+<dl class="py class">
+<dt id="test_game.TestGameClass">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_game.</span></code><code class="sig-name descname"><span class="pre">TestGameClass</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Test Game Class.</p>
+<dl class="py method">
+<dt id="test_game.TestGameClass.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_change_name">
+<code class="sig-name descname"><span class="pre">test_change_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_change_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_change_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test changing name feature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_cheat">
+<code class="sig-name descname"><span class="pre">test_cheat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_cheat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_cheat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test cheat method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_check_levels">
+<code class="sig-name descname"><span class="pre">test_check_levels</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_check_levels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_check_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test check_levels.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_computer_turn">
+<code class="sig-name descname"><span class="pre">test_computer_turn</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_computer_turn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_computer_turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test computer_turn.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_console">
+<code class="sig-name descname"><span class="pre">test_console</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_console"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_console" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_create_player">
+<code class="sig-name descname"><span class="pre">test_create_player</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_create_player"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_create_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test create_player.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_create_player1">
+<code class="sig-name descname"><span class="pre">test_create_player1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_create_player1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_create_player1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test create_player.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_create_player2">
+<code class="sig-name descname"><span class="pre">test_create_player2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_create_player2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_create_player2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test create_player.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_end_game">
+<code class="sig-name descname"><span class="pre">test_end_game</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_end_game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_end_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test end_game.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_get_computer_controler">
+<code class="sig-name descname"><span class="pre">test_get_computer_controler</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_get_computer_controler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_get_computer_controler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test get_computer_controler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_get_game_status">
+<code class="sig-name descname"><span class="pre">test_get_game_status</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_get_game_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_get_game_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test get_game_status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_get_playing_now">
+<code class="sig-name descname"><span class="pre">test_get_playing_now</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_get_playing_now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_get_playing_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test set And get_playing_now.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_highscore">
+<code class="sig-name descname"><span class="pre">test_highscore</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_highscore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_highscore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test highscore method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_print_out_dice">
+<code class="sig-name descname"><span class="pre">test_print_out_dice</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_print_out_dice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_print_out_dice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test print_out_dice.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_print_score">
+<code class="sig-name descname"><span class="pre">test_print_score</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_print_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_print_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test print_score.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_roll">
+<code class="sig-name descname"><span class="pre">test_roll</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_roll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_roll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test roll.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_set_cmputer_controler">
+<code class="sig-name descname"><span class="pre">test_set_cmputer_controler</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_set_cmputer_controler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_set_cmputer_controler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test set_computer_controler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_set_face">
+<code class="sig-name descname"><span class="pre">test_set_face</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_set_face"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_set_face" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test set_face.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_game.TestGameClass.test_switcher">
+<code class="sig-name descname"><span class="pre">test_switcher</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_game.html#TestGameClass.test_switcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_game.TestGameClass.test_switcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test Switcher.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_highscore">
+<span id="test-highscore"></span><h2>test_highscore<a class="headerlink" href="#module-test_highscore" title="Permalink to this headline">¶</a></h2>
+<p>Test highscore module.</p>
+<dl class="py class">
+<dt id="test_highscore.TestHigscore">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_highscore.</span></code><code class="sig-name descname"><span class="pre">TestHigscore</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_highscore.html#TestHigscore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_highscore.TestHigscore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Test Higscore Class.</p>
+<dl class="py method">
+<dt id="test_highscore.TestHigscore.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_highscore.html#TestHigscore.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_highscore.TestHigscore.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>SetUp method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_highscore.TestHigscore.test_get_path">
+<code class="sig-name descname"><span class="pre">test_get_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_highscore.html#TestHigscore.test_get_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_highscore.TestHigscore.test_get_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test get_path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_highscore.TestHigscore.test_read_file">
+<code class="sig-name descname"><span class="pre">test_read_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_highscore.html#TestHigscore.test_read_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_highscore.TestHigscore.test_read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test read_file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_highscore.TestHigscore.test_write_file">
+<code class="sig-name descname"><span class="pre">test_write_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_highscore.html#TestHigscore.test_write_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_highscore.TestHigscore.test_write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test write_file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_histogram">
+<span id="test-histogram"></span><h2>test_histogram<a class="headerlink" href="#module-test_histogram" title="Permalink to this headline">¶</a></h2>
+<p>Test Histogram module.</p>
+<dl class="py class">
+<dt id="test_histogram.TestHistogram">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_histogram.</span></code><code class="sig-name descname"><span class="pre">TestHistogram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_histogram.html#TestHistogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_histogram.TestHistogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Test Histogram Class.</p>
+<dl class="py method">
+<dt id="test_histogram.TestHistogram.test_print_asterisk">
+<code class="sig-name descname"><span class="pre">test_print_asterisk</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_histogram.html#TestHistogram.test_print_asterisk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_histogram.TestHistogram.test_print_asterisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test print_asterisk method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_histogram.TestHistogram.test_print_histogram">
+<code class="sig-name descname"><span class="pre">test_print_histogram</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_histogram.html#TestHistogram.test_print_histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_histogram.TestHistogram.test_print_histogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing print_histogram by catching
+output and comparing it</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_intelligence">
+<span id="test-intelligence"></span><h2>test_intelligence<a class="headerlink" href="#module-test_intelligence" title="Permalink to this headline">¶</a></h2>
+<p>Test intelligence module.</p>
+<dl class="py class">
+<dt id="test_intelligence.TestIntelligenceClass">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_intelligence.</span></code><code class="sig-name descname"><span class="pre">TestIntelligenceClass</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Test Histogram Class.</p>
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook method for setting up the test fixture before exercising it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.test_act_easy">
+<code class="sig-name descname"><span class="pre">test_act_easy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.test_act_easy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.test_act_easy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test act_easy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.test_act_hard">
+<code class="sig-name descname"><span class="pre">test_act_hard</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.test_act_hard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.test_act_hard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test act-hard method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.test_act_normal">
+<code class="sig-name descname"><span class="pre">test_act_normal</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.test_act_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.test_act_normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test act_normal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.test_cheat_decision">
+<code class="sig-name descname"><span class="pre">test_cheat_decision</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.test_cheat_decision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.test_cheat_decision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test cheat-decision.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_intelligence.TestIntelligenceClass.test_get_init_decision">
+<code class="sig-name descname"><span class="pre">test_get_init_decision</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_intelligence.html#TestIntelligenceClass.test_get_init_decision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_intelligence.TestIntelligenceClass.test_get_init_decision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teset get_initelligence_dicision.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-test_player">
+<span id="test-player"></span><h2>test_player<a class="headerlink" href="#module-test_player" title="Permalink to this headline">¶</a></h2>
+<p>Test player module.</p>
+<dl class="py class">
+<dt id="test_player.TestPlayer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">test_player.</span></code><code class="sig-name descname"><span class="pre">TestPlayer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<p>Test Histogram Class.</p>
+<dl class="py method">
+<dt id="test_player.TestPlayer.setUp">
+<code class="sig-name descname"><span class="pre">setUp</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer.setUp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creating instances at the beginning of tests cases</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_player.TestPlayer.test__chane_score">
+<code class="sig-name descname"><span class="pre">test__chane_score</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer.test__chane_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer.test__chane_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test change_score method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_player.TestPlayer.test_get_score_list">
+<code class="sig-name descname"><span class="pre">test_get_score_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer.test_get_score_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer.test_get_score_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test Player Class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_player.TestPlayer.test_set_name">
+<code class="sig-name descname"><span class="pre">test_set_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer.test_set_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer.test_set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test set/change player name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="test_player.TestPlayer.test_set_score_list">
+<code class="sig-name descname"><span class="pre">test_set_score_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/test_player.html#TestPlayer.test_set_score_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#test_player.TestPlayer.test_set_score_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test set_score_list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="univ.html" class="btn btn-neutral float-right" title="Kristianstad’s university" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Dice Game’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Kristianstad&#39;s University.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
