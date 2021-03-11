@@ -1,0 +1,19 @@
+# Unittest
+coverage
+
+
+#metrics.pylint
+flake8
+flake8-docstrings
+flake8-polyfill
+pylint
+
+# Documentation
+pdoc3
+sphinx
+sudo
+sphinx_rtd_theme
+conda
+mesa
+conda
+graphviz
