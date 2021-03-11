@@ -1,10 +1,10 @@
-﻿#Welcome in Dice Game!
+﻿Welcome in Dice Game!
 =====================
 
 
 This project has been created by students in Kristianstad university in Sweden.
 
-Bellow are steps, and setups you need to follow all features.
+Bellow are steps and setups you need to follow all features.
 
 
 
@@ -28,9 +28,10 @@ Or you may follow the following path for installation.
 www.chocolatey.org/install
 
 
+
 Have _Make_ on your environment
 
-linux - What are makefiles - make install - Stack Overflow
+www.chocolatey.org/packages/make
 
 
 
@@ -40,36 +41,39 @@ and finally
 To be able to try all feature, it is preferred to create Virtual Environment.
 
 
-In Repo directory, enter the equivalent command line according to your operating system:
+On Repo directory, enter the equivalent command line according to your operating system:
 
 
 If you are using Mac or Linux, python3 is used to approach python operation. Meanwhile,  python on windows.
+
 
 
 To create venv
 --------------
 
 
-'python3 -m venv env'   Which is env the name of it and you may change it.
+**python3 -m venv env**   Which is _env_ the name of it and you may change it.
 
 
-	To activate it write:	‘. .venv(bin/activate’	
+	To activate it write:	**. env/bin/activate**	
 
-        To deactivate it:	        ‘deactivate
+        To deactivate it:	        **deactivate**
 
 
 
-'Python -m venv env'     If you are on windows
+**Python -m venv env**     If you are on windows
        
 
-       To activate it write:	‘. .venv(bin/activate’
+       To activate it write:	**. env/bin/activate**
 
-       To deactivate it:	        ‘deactivate
+       To deactivate it:	        **deactivate**
 
 
 
-Notice that if you are a windows user, I am expecting you to use GIT-bash.
+Notice that if you are a windows user, I am expecting you to use _GIT-bash_.
 
+
+If you want to avoid creating VE. You may use comman line mentioned in section bellow.
 
 
 
@@ -79,12 +83,9 @@ Download requirements
 
 After activating enter the following command:
 
-‘Python -m pip install -r requirements.txt’  (python3 if you are on mac)
 
 
-
-
-If you want to avoid any installation. You may find a section bellow to reach fetchers manually.
+**Python -m pip install -r requirements.txt**  (python3 if you are on mac)
 
 
 
@@ -99,10 +100,10 @@ Now, let gets start
 
 
 
-##Run the game:
+## Run the game:
 
 
-Navigate to dice_game file, using ‘cd dice_file’
+Navigate to dice_game file, using **cd dice_file**
 
 And simply enter ‘python main.py’ 
 
@@ -114,7 +115,7 @@ You can always press ? or help to get the introduction.
 
 
 
-##Testing:
+## Testing:
 
 After you are done with the game, let us trying tests some code.
 
@@ -138,7 +139,7 @@ Enter:
 
 
 
-##UML:
+## UML:
 
 
 **make pyreverse**, to create uml for whoe packages.
@@ -160,7 +161,7 @@ where class is the name of wanted class.
 
 
 
-##Documentation:
+## Documentation:
 
 
 To get the class, method documentations
@@ -179,7 +180,7 @@ You will get another folder ‘doc’ and you are able to find all documentation
 
 
 
-##Manualy comman lines:
+## Manualy comman lines:
 
 
 Inside dice_game folder:
@@ -197,7 +198,7 @@ Inside dice_game folder:
 
 
 
-##UML:
+## UML:
 
 
 **pyreverse *.py	***
@@ -209,10 +210,19 @@ Inside dice_game folder:
 
 
 
-##Who are we:
+## Who are we:
 
 
 Students in Kristianstad’s university
+
+
+Aiham Altahan
+
+Mohammed Horani
+
+Osagie Osahenagharu
+
+
 
 
 www.hkr.se
@@ -227,7 +237,7 @@ www.hkr.se
 
 
 
-##Reference:
+## Reference:
 
 
 Some parts of code taken from:
