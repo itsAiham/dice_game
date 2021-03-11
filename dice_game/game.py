@@ -4,6 +4,7 @@
 # pylint: disable=W0622
 # pylint: disable=W0201
 # pylint: disable=E0401
+
 """
 The instance of game class is created within shell.py.
 After analyzing the input, game object
@@ -19,7 +20,7 @@ from histogram import Histogram
 class Game():
     """Game Class."""
 
-    win_pig = 10
+    win_pig = 50
     still_going = False
 
     def __init__(self):

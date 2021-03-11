@@ -9,6 +9,7 @@ Welcome In Pig Dice!
 
 The game is easy. Try to roll the dice and not gitting
 values 1 and 6, or you lose your score and turn.
+The winner who reach 50 points first.
 
 To start the game,
 
