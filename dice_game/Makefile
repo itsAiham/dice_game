@@ -1,8 +1,25 @@
+#!/usr/bin/env make
 
 
+into:
+	@echo "Welcome!"
+	#test
+	@echo "coverage"
+	@echo "html"
+	# Code cleaner
+	@echo "flake8"
+	@echo "coverage"
+	@echo "pylint"
+	@echo "test"
+	#Doc
+	@echo "pdoc"
+	#uml
+	@echo "uml"
+	@echo "game"
 
-venv:
-	@printf "Welcomce in make File!"
+run:
+	$(PYTHON) main.py
+
 
 coverage:
 	coverage run -m unittest discover . "test_*.py"
@@ -11,24 +28,40 @@ coverage:
 html:
 	coverage html
 
-pylint:
-	pylint main.py
-	pylint game.py
-	pylint dice.py
-	pylint histogram.py
-	pylint highscore.py
-	pylint player.py
-	pylint shell.py
-	pylint test_dice.py
-	pylint test_game.py
-	pylint test_highscore.py
-	pylint test_histogram.py
-	pylint test_intelligence.py
-	pylint test_player.py
-
-
 flake8:
 	flake8
+	
+pylint:
+	pylint *.py
 
 test: flake8 pylint
 
+
+
+pdoc:
+	rm -rf doc/pdoc
+	pdoc --html -o doc/pdoc .
+
+uml:
+	pyreverse *.py
+	pyreverse -o png -p pyreverse *.py
+
+game:
+	pyreverse game.py
+	pyreverse -o png -p pyreverse game.py
+
+
+
+
+# irst 
+# Cd dice_game
+# python3 -m venv .venv
+# . .venv/bin/activate
+# pip3 install mesa(just pip for you)
+# pip3 install conda(pip for you)
+# pip3 install graphviz(if it doesn't work)
+# brew install graphviz 
+# Then cd dice_game
+#  pyreverse -o png -p Pyreverse /Users/Aiham/dice_game/dice_game
+# And that's it my friend
+# write me the command on how to make requirements
