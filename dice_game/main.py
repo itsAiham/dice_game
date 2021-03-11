@@ -4,8 +4,7 @@
 # pylint: disable=E0401
 
 """
-
-Welcome In Pig Dice!
+Welcome In Pig Dice!.
 
 The game is easy. Try to roll the dice and not gitting
 values 1 and 6, or you lose your score and turn.

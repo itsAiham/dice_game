@@ -1,24 +1,22 @@
 #!/usr/bin/env make
 
 
-into:
+intro:
 	@echo "Welcome!"
-	#test
-	@echo "coverage"
-	@echo "html"
-	# Code cleaner
-	@echo "flake8"
-	@echo "coverage"
-	@echo "pylint"
-	@echo "test"
-	#Doc
-	@echo "pdoc"
-	#uml
-	@echo "uml"
-	@echo "game"
-
-run:
-	$(PYTHON) main.py
+	@echo "The following are the commands you can enter after 'make'"
+	@echo " "
+	@echo "unittest :"
+	@echo "		coverage"
+	@echo "		html"
+	@echo "clean code :"
+	@echo "		flake8"
+	@echo "		pylint"
+	@echo "		test"
+	@echo "Documentation :"
+	@echo "		pdoc"
+	@echo "UML :"
+	@echo "		uml"
+	@echo "		game"
 
 
 coverage:
@@ -37,10 +35,9 @@ pylint:
 test: flake8 pylint
 
 
-
 pdoc:
-	rm -rf doc/pdoc
-	pdoc --html -o doc/pdoc .
+	rm -rf scr="classes.png"
+	pdoc --html -o "packages.png" .
 
 uml:
 	pyreverse *.py
@@ -49,19 +46,3 @@ uml:
 game:
 	pyreverse game.py
 	pyreverse -o png -p pyreverse game.py
-
-
-
-
-# irst 
-# Cd dice_game
-# python3 -m venv .venv
-# . .venv/bin/activate
-# pip3 install mesa(just pip for you)
-# pip3 install conda(pip for you)
-# pip3 install graphviz(if it doesn't work)
-# brew install graphviz 
-# Then cd dice_game
-#  pyreverse -o png -p Pyreverse /Users/Aiham/dice_game/dice_game
-# And that's it my friend
-# write me the command on how to make requirements

@@ -38,7 +38,7 @@ www.chocolatey.org/packages/make
 and finally
 
 
-To be able to try all feature, it is preferred to create Virtual Environment.
+To be able to try all features, it is preferred to create Virtual Environment.
 
 
 On Repo directory, enter the equivalent command line according to your operating system:
@@ -100,7 +100,7 @@ Now, let gets start
 
 
 
-## Run the game:
+#### Run the game:
 
 
 Navigate to dice_game file, using **cd dice_file**
@@ -115,7 +115,7 @@ You can always press ? or help to get the introduction.
 
 
 
-## Testing:
+#### Testing:
 
 After you are done with the game, let us trying tests some code.
 
@@ -126,7 +126,7 @@ Enter:
 **make coverage**, to run unittest and get the report about testing.
 
 
-**make html'**,  to get a visual report about which lines have been covered and which not.
+**make html**,  to get a visual report about which lines have been covered and which not.
 
 
 **make flake8**, to run code cleaner.
@@ -135,11 +135,11 @@ Enter:
 **make pylint**, to run code analysis.
 
 
-**make test**, to run both test.
+**make test**, to run both tests.
 
 
 
-## UML:
+#### UML:
 
 
 **make pyreverse**, to create uml for whoe packages.
@@ -161,7 +161,7 @@ where class is the name of wanted class.
 
 
 
-## Documentation:
+#### Documentation:
 
 
 To get the class, method documentations
@@ -180,40 +180,40 @@ You will get another folder ‘doc’ and you are able to find all documentation
 
 
 
-## Manualy comman lines:
+#### Manualy comman lines:
 
 
 Inside dice_game folder:
 
 
-**coverage  run -m unittest discover . “test_*py” ***		Test all modules within the package.
+( coverage  run -m unittest discover . “test_*py” )		Test all modules within the package.
 
-**coverage report -m **		Create report AFTER ran testing.
+( coverage report -m )		Create report AFTER ran testing.
 
-**cverage html** 			Create HTML report
+( coverage html )			Create HTML report
 
-**flake8**  		To run flake8
+( flake8 )  		To run flake8
 
-**pylint *.py ***       To run pylint on all files that have py extension.
-
-
-
-## UML:
-
-
-**pyreverse *.py	***
-
-
-**pyreverse -o png -p pyreverse *.py  ***		To generate UML for whole package.
+( pylint *.py )       To run pylint on all files that have py extension.
 
 
 
+#### UML:
 
 
-## Who are we:
+"pyreverse *.py "
 
 
-Students in Kristianstad’s university
+"pyreverse -o png -p pyreverse *.py  " 	To generate UML for whole package.
+
+
+
+
+
+#### Who are we:
+
+
+Students at Kristianstad’s university
 
 
 Aiham Altahan
@@ -237,7 +237,7 @@ www.hkr.se
 
 
 
-## Reference:
+#### Reference:
 
 
 Some parts of code taken from:
