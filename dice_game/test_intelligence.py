@@ -17,6 +17,7 @@ class TestIntelligenceClass(unittest.TestCase):
     """Test Histogram Class."""
 
     def setUp(self):
+        """Run at the beginning of the test."""
         self.game = Game()
         self.dice = Dice()
         self.intelligence = Intelligence("easy")

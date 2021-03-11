@@ -15,7 +15,7 @@ class TestPlayer(unittest.TestCase):
     """Test Histogram Class."""
 
     def setUp(self):
-        """Creating instances at the beginning of tests cases"""
+        """Create instances at the beginning of tests cases."""
         self.game = Game()
         self.player = Player(str, bool)
         self.score_list = []
@@ -23,9 +23,8 @@ class TestPlayer(unittest.TestCase):
 
         self.fake_die = random.randint(1, 6)
 
-    def test__chane_score(self):
+    def test_chane_score(self):
         """Test change_score method."""
-
         self.player.change_score(1)
         self.assertTrue(self.player.get_score() == 0)
         # Assuming the die face == 6

@@ -10,19 +10,19 @@ from dice import Dice
 
 
 class TestDiceClass(unittest.TestCase):
-    """Dice class Test"""
+    """Dice class Test."""
 
     def setUp(self):
-        """Runs first."""
+        """Run at the beginning of the test."""
         self.faces = (1, 2, 3, 4, 5, 6)
 
-    def test_init_(self):
-        """Test the created instance"""
+    def test_init(self):
+        """Test the created instance."""
         dice = Dice()
         self.assertIsInstance(dice, Dice)
 
     def test_roll_dice(self):
-        """Test that the rolled value is in the list above"""
+        """Test that the rolled value is in the list above."""
         dice = Dice()
         exp = random.randint(dice.lowest, dice.highest)
         res = dice.lowest <= exp <= dice.highest
@@ -34,7 +34,7 @@ class TestDiceClass(unittest.TestCase):
         self.assertIn(dice.rolled_dice, self.faces)
 
     def test_get_dice(self):
-        """Testing the returned value from rolling a die"""
+        """Tests the returned value after rolling a die."""
         dice = Dice()
         exp = dice.get_dice()
         self.assertIn(exp, self.faces)

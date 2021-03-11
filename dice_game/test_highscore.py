@@ -19,7 +19,7 @@ class TestHigscore(unittest.TestCase):
     """Test Higscore Class."""
 
     def setUp(self):
-        """SetUp method."""
+        """Run at the beginning of the test."""
         self.game = Game()
         self.mock_player1 = Mock(spec=Player, name="player1",
                                  score=42, decision=False)

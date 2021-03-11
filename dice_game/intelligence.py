@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*
 
 """
-Controls the intelligence and logic of computer
-player according to chosen level
+Controls the intelligence computer player.
+
+According to chosen level the class make decision for next movement.
 """
 
 
@@ -16,7 +17,7 @@ class Intelligence():
     orders = (True, False, True)
 
     def __init__(self, level):
-        """Initializing levels"""
+        """Initialize levels."""
         self.level = level
 
     def act_easy(self):
@@ -36,7 +37,7 @@ class Intelligence():
             print("Computer: I think my score gonna be higher now!")
             return True
 
-        elif self.cheat_decison():
+        elif self.cheat_decison() and value in (1, 6):
             print("bst bst -->  Computer CHEATS!!")
             return False
 
@@ -44,7 +45,7 @@ class Intelligence():
         return self.act_easy()
 
     def get_inti_decision(self, player, dice_value):
-        """Returning a method using currying approach to set level."""
+        """Return a method using currying approach to set level."""
         if self.level == "normal":
             return self.act_normal(player)
 
@@ -53,6 +54,9 @@ class Intelligence():
         return self.act_easy()
 
     def cheat_decison(self):
-        """Computer decision about cheating, which is random choice
-        using same boolean tuple."""
+        """
+        Create computer decision about cheating.
+
+        Use same boolean tuple to init decision.
+        """
         return random.choice(self.orders)

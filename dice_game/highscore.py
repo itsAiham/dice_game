@@ -4,8 +4,9 @@
 
 
 """
-The class accepts instances of players, to be able to save
-scores at the end of the game.
+The class accepts instances of players.
+
+To be able to save scores at the end of the game.
 Player has ability to read score file when script runs
 """
 
@@ -14,13 +15,13 @@ class Highscore():
     """Highscore Class."""
 
     def __init__(self, player1, player2):
+        """Create instances for players to reach thier info."""
         self.player1 = player1
         self.player2 = player2
         self.path = 'score.txt'
 
     def write_file(self):
-        """Initialize players' name and score to write them in txt file
-        when game ends."""
+        """Initialize players' name and score to write them in txt file."""
         try:
             # The following variables to pass Flake8
             name1 = self.player1.get_name().capitalize()
@@ -43,7 +44,7 @@ class Highscore():
 
     @staticmethod
     def read_file():
-        """Read highscore file"""
+        """Read highscore file."""
         try:
             print("\n>>>>>   Score lise :\n")
             with open('score.txt        ', 'r') as score_file:

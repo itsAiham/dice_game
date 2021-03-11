@@ -6,6 +6,8 @@
 # pylint: disable=E0401
 
 """
+Process operations according to input taken in shell.py.
+
 The instance of game class is created within shell.py.
 After analyzing the input, game object
 reach the equivalent method for processing
@@ -24,9 +26,11 @@ class Game():
     still_going = False
 
     def __init__(self):
+        """Initialize instances from other classes."""
         self.computer_controlar = False
         self.dice = Dice()
 
+        # Changable value
         self.forbidden_face = 1
 
         self.player1 = Player(str,  bool)
@@ -38,11 +42,13 @@ class Game():
         self.computer_player = Player("Computer",  bool)
         self.computer_player.set_level("easy")
 
-        # self.score = Highscore(self.player1, self.player2)
+        self.score = Highscore(self.player1, self.player2)
         self.histogram = Histogram()
 
     def create_player(self, player_amount):
         """
+        Create Players accourding to passed parameter.
+
         Get info from shell.py, fit equavelent players with names.
         Turn computer_controller on/off.
         """
@@ -54,22 +60,23 @@ class Game():
         #  Hold player object temporarily above
 
         if player_amount == 2:
-            print("Created another player")
             player2_name = input("Enter the second player's name >> ")
             if player2_name == "":
                 player2_name = "USER2"
             self.player2.set_name(player2_name)
 
         else:
-            print("Created computer player")
-            print(self.set_computer_controler(True))
             self.player2 = self.computer_player
-        print("Game Starts!\n")
+        print("Game Starts!\n\n")
 
     def switcher(self):
-        """After considering who is playing now and whether
+        """
+        Switch between players.
+
+        Considering who is playing now and whether
         computer-controler true or false, take rule in switching turns
-        between players."""
+        between players.
+        """
         if (self.get_computer_controler() and
            self.get_playing_now() == self.player1):
             self.set_playing_now(self.computer_player)
@@ -90,8 +97,11 @@ class Game():
         return self.set_playing_now(self.player1)
 
     def roll(self):
-        """Reached by human players and call another
-        method to make operations depends on die rollments."""
+        """
+        Reached by human players.
+
+        Call other methods to make operations depends on die rollments.
+        """
         force_stop = self.console(self.get_playing_now())
 
         if not force_stop and self.get_game_status():
@@ -103,7 +113,6 @@ class Game():
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
         self.print_score(player)
-        print("dice,in,game", self.dice.get_dice())
         # self.mock_in_console = self.dice.get_dice()
         self.set_face(self.dice.get_dice())  # For test purpose.
 
@@ -135,7 +144,6 @@ class Game():
             print("\t\t\t\t>>>>>  Computer decide to ROLL <<<<<")
             self.playing_now = self.computer_player
             force_stop = self.console(self.computer_player)
-            print(force_stop)
             if not force_stop:
                 print("\t\t\t\t>>>>>  Computer lose its turn <<<<<")
                 self.switcher()
@@ -146,7 +154,7 @@ class Game():
         return self.dice.get_dice()
 
     def check_levels(self, level):
-        """Check if the entered level is valid"""
+        """Check if the entered level is valid."""
         levels = ("easy", "normal", "hard")
         if level in levels:
             self.computer_player.set_level(level)
@@ -179,8 +187,7 @@ class Game():
         self.score.read_file()
 
     def end_game(self, player):
-        """End game Class
-        call other methods in turns."""
+        """Call other methods to process game ending."""
         self.score = Highscore(self.player1, self.player2)
 
         # self.score.write_highscore()
@@ -199,7 +206,7 @@ class Game():
         return self.still_going
 
     def set_playing_now(self, player):
-        """Change object's holder to help exchanging players"""
+        """Change object's holder to help exchanging players."""
         self.playing_now = player
 
     def get_playing_now(self):
@@ -208,12 +215,16 @@ class Game():
 
     def set_computer_controler(self, bool):
         """Setter for a boolen variable.
-        Help in switching turns."""
+
+        Help in switching turns.
+        """
         self.computer_controlar = bool
 
     def get_computer_controler(self):
         """Getter for a boolen variable.
-        Help to switching turns."""
+
+        Help to switching turns.
+        """
         return self.computer_controlar
 
     # The following two methods helps to check
@@ -221,11 +232,15 @@ class Game():
     # before the next rollment,
     # do not effect the game, helping in testing
     def set_face(self, num):
-        """This method used for testing purpose.
-        Set value in variable to hold dice face before automatic rolling"""
+        """Set value in variable to hold dice face before automatic rolling.
+
+        This method used for testing purpose.
+        """
         self.forbidden_face = num
 
     def get_face(self):
-        """This method used for testing purpose.
-        Return dice face before automatic rolling."""
+        """Return dice face before automatic rolling.
+
+        Method used for testing purpose.
+        """
         return self.forbidden_face

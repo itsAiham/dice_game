@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
 # pylint: disable=E0401
+# pylint: disable=E1111
 
 """Test game module."""
 
@@ -20,6 +21,7 @@ class TestGameClass(unittest.TestCase):
     """Test Game Class."""
 
     def setUp(self):
+        """Run at the beginning of the test."""
         self.game = Game()
         self.game.set_game_status(True)
         self.dice = Dice()
@@ -46,8 +48,6 @@ class TestGameClass(unittest.TestCase):
         self.game.player1_name = mock
         self.assertEqual(self.game.player1.get_name(), "name")
         self.assertEqual(self.game.player2.get_name(), "Computer")
-        # Check that computer_controler is on
-        self.assertTrue(self.game.get_computer_controler())
 
     @patch('builtins.input', return_value='')
     def test_create_player2(self, mock):

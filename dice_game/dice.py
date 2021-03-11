@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Present Die object used in the game."""
+"""Present dice object used in the game."""
 
 import random
-# import os
-# cwd = os.getcwd()
-# import sys
 
 
 class Dice():

@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*
 # pylint: disable=E0401
 
-"""
-Player Class to control player objects create in game.
-"""
+"""Player Class to control player objects create in game."""
 
 from intelligence import Intelligence
 
@@ -15,7 +13,7 @@ class Player():
     reaction = Intelligence(None)
 
     def __init__(self, name, decision):
-        """Initialisation."""
+        """Accept player's name and create score."""
         self.name = name
         self.score = 0
         self.score_list = []
@@ -46,9 +44,9 @@ class Player():
         return self.score
 
     def set_score_list(self, num):
-        """. Initialisation."""
+        """Set score list."""
         self.score_list.append(num)
 
     def get_score_list(self):
-        """. Initialisation."""
+        """Return score list."""
         return self.score_list

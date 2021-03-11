@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
 # pylint: disable=E0401
+# pylint: disable=E1111
 
 """
-Takes input from user. Control the game through
-parse the input and call the equivalent method to operate the work.
+Takes input from user/s.
+
+Control the game through parse the input
+and call the equivalent method to operate the work.
 """
 
 import cmd
@@ -54,7 +57,6 @@ class Shell(cmd.Cmd):
             print("Game Over!")
         except ValueError:
             self.__delattr__("game")
-            print("deleted")
             self.__init__()
             print(ValueError)
 
@@ -97,9 +99,9 @@ class Shell(cmd.Cmd):
 
     def do_help(self, _):
         """Print orders' format."""
-        print("\nstart _: Enter 'start' + 'space' + '1' or '2' to"
+        print("\nstart n   : Enter 'start' + 'space' + '1' or '2' to"
               "start or restart a new game.")
-        print("name _      : 'name' + 'your name' to"
+        print("name        : 'name' + 'your name' to"
               " change the current player name.")
         print("roll        : Roll the dice.")
         print("score       : Print out highscores.")
@@ -109,9 +111,9 @@ class Shell(cmd.Cmd):
         print("q, exit, EOF: Exit the game.\n")
 
     def default(self, line):
-        """Default putput."""
-        self.stdout.write('\nOBS! Unknown command:%s.\n'
-                          "Enter help to get info\n"
+        """Print out message when invalid input."""
+        self.stdout.write('\nOBS! Unknown command:  %s.\n'
+                          "Enter help to get info\n\n"
                           '' % (line,))
 
     def do_end(self, _):

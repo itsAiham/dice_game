@@ -16,10 +16,7 @@ class TestHistogram(unittest.TestCase):
     """Test Histogram Class."""
 
     def test_print_histogram(self):
-        """
-        Testing print_histogram by catching
-        output and comparing it
-        """
+        """Test print_histogram by catching output and comparing it."""
         histogram = Histogram()
         player1 = Player("name1", False)
         player2 = Player("name2", False)
