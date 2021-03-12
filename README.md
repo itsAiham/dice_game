@@ -11,7 +11,7 @@ Bellow are steps and setups you need to follow all features.
 
 The basic goal of the project, is to reach clean, bugs free code.
 
-Game has been developed using python OOP. The way to approach clean code with no (unaware dimensions) has been reach by writing unittest for classes used in project. 
+Game has been developed using python OOP. The way to approach clean code with no (unaware dimensions) has been reach by writing unittest for classes used in project.\\ 
 
 
 
@@ -31,7 +31,7 @@ www.chocolatey.org/install
 
 Have _Make_ on your environment
 
-www.chocolatey.org/packages/make
+www.chocolatey.org/packages/make\\
 
 
 
@@ -44,7 +44,7 @@ To be able to try all features, it is preferred to create Virtual Environment.
 On Repo directory, enter the equivalent command line according to your operating system:
 
 
-If you are using Mac or Linux, python3 is used to approach python operation. Meanwhile,  python on windows.
+If you are using Mac or Linux, python3 is used to approach python operation. Meanwhile,  python on windows.\\
 
 
 
@@ -73,7 +73,7 @@ To create venv
 Notice that if you are a windows user, I am expecting you to use _GIT-bash_.
 
 
-If you want to avoid creating VE. You may use comman line mentioned in section bellow.
+If you want to avoid creating VE. You may use comman line mentioned in section bellow.\\
 
 
 
@@ -85,7 +85,7 @@ After activating enter the following command:
 
 
 
-**Python -m pip install -r requirements.txt**  (python3 if you are on mac)
+**Python -m pip install -r requirements.txt**  (python3 if you are on mac)\\
 
 
 
@@ -110,7 +110,7 @@ And simply enter ‘python main.py’
 
 Notice that you enter another terminal, and you want to be able to exit it unless you follow the approach.
 
-You can always press ? or help to get the introduction.
+You can always press ? or help to get the introduction.\\
 
 
 
@@ -135,7 +135,7 @@ Enter:
 **make pylint**, to run code analysis.
 
 
-**make test**, to run both tests.
+**make test**, to run both tests.\\
 
 
   
@@ -157,7 +157,7 @@ If you want to get UML for another class. Press the following command separately
 **pyreverse -o png -p pyreverse class.py**
 
 
-where class is the name of wanted class.
+where class is the name of wanted class.\\
 
   
 
@@ -169,7 +169,7 @@ To get the class, method documentations
 Press:  **make pdoc**
 
 
-You will get another folder ‘doc’ and you are able to find all documentation inside it.
+You will get another folder ‘doc’ and you are able to find all documentation inside it.\\
 
 
   
@@ -180,7 +180,7 @@ You will get another folder ‘doc’ and you are able to find all documentation
 
 
 
-Manualy comman lines
+Manualy comman lines\\
 --------------------
   
 Inside dice_game folder:
@@ -206,32 +206,8 @@ Feel free to COPY exactly what inside brackets
 "pyreverse *.py "
 
 
-"pyreverse -o png -p pyreverse *.py  " 	To generate UML for whole package.
-
-
-
-
-  
-#### Who are we:
-
-
-Students at Kristianstad’s university
-
-
-Aiham Altahan
-
-Mohammed Horani
-
-Osagie Osahenagharu
-
-
-  
-
-www.hkr.se
-
-  
-  
-  
+"pyreverse -o png -p pyreverse *.py  " 	To generate UML for whole package.\\
+ 
 
 
 
