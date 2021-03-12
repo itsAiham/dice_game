@@ -25,6 +25,7 @@ coverage:
 
 html:
 	coverage html
+	@echo "Check file dice_game/htmlcov/"
 
 flake8:
 	flake8
@@ -38,10 +39,13 @@ test: flake8 pylint
 pdoc:
 	rm -rf scr="classes.png"
 	pdoc --html -o "packages.png" .
+	@echo "created simple doc.. check dice_game/pachages.png/"
 
 uml:
 	pyreverse *.py
 	pyreverse -o png -p pyreverse *.py
+	@echo "created simple doc.. check photos pachages.png"
+
 
 game:
 	pyreverse game.py
