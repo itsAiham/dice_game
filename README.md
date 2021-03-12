@@ -24,19 +24,9 @@ Setup you need
 --------------
 
 
-I am expecting you to have _Choco_ installed.
-Or you may follow the following path for installation.
+I am expecting you to have _make_ installed
 
-
-
-```bash
-www.chocolatey.org/install
-
-```
-
-
-
-Have _Make_ on your environment
+Have _Make_ on your environment (in case you want to enter short comman lines)
 
 
 
@@ -45,33 +35,34 @@ www.chocolatey.org/packages/make
 ```
 
 
+the last version of pip
+some feature will not work with an old version!
+
+```bash
+pip3 install pip --upgrade
+```
+
 and finally
 
 
 To be able to try all features, it is preferred to create Virtual Environment.
 
 
-On Repo directory, enter the equivalent command line according to your operating system:
-
-
-If you are using Mac or Linux, python3 is used to approach python operation. Meanwhile,  python on windows.
 
 
 
-Please, check that you got graphviz
+Create venv
+--------------
+
+Navigate into repo
+if you are a windows user, use always **python** insteade of **python3**
 
 
 ```bash
-dot -V
+python3 -m venv env      Where _env_ the name of it and you may change it.
 ```
 
 
-
-To create venv
---------------
-
-
-**python3 -m venv env**   Where _env_ the name of it and you may change it.
 
 
 	To activate it write:	". env/bin/activate"
@@ -79,11 +70,10 @@ To create venv
         To deactivate it:	        "deactivate"
 
 
-
-**Python -m venv env**     If you are on windows
+To activate it on windows:
        
 
-       To activate it write:	". env/bin/activate"
+       To activate it write:	". env/Scripts/activate"
 
        To deactivate it:	        "deactivate"
 
@@ -104,12 +94,29 @@ After activating enter the following command:
 
 
 
-**Python -m pip install -r requirements.txt**  (python3 if you are on mac)
+
+```bash
+Python3 -m pip install -r requirements.txt
+```
+
+check that your pip list
+
+```bash
+pip3 list
+```
 
 
+If the list does not have more that three lines.
+Then your installation faild.
 
 
+You need to upgrade your pip using the following comman
 
+
+```bash
+pip3 install pip --upgrade
+```
+***pip  if you are on windows***
 
   
   
@@ -122,14 +129,17 @@ Now, let gets start
 ### Run the game:
 
 
-Navigate to dice_game file, using **cd dice_file**
+Navigate into dice_game the folder not the whole repo, using **cd dice_file**
 
-And simply enter ‘python main.py’ 
+ 
+```bash
+python3 main.py
+```
 
 
-Notice that you enter another terminal, and you want to be able to exit it unless you follow the approach.
+Notice that you enter another terminal, and you would not exit it unless you follow enter **q** or other exit commands.
 
-You can always press ? or help to get the introduction.
+You can always press ? or help to get the introduction within game terminal.
 
 
 
@@ -154,6 +164,9 @@ To get a visual report about which lines have been covered and which not.
 ```bash
 make html
 ```
+A new folder is created **htmlcov**. 
+You find the reports in it
+
 
 
 Run flake8, code cleaner.
@@ -181,15 +194,17 @@ make test
 ### UML
 
 
-Create uml for whoe packages.
+Create uml for whole the package.
 
 
 ```bash
 make pyreverse
 ```
+You got ump with .png extension within dice_game folder.
 
 
-Ganerate UML for game class
+
+To ganerate UML for only game class.
 
 
 ```bash
@@ -198,8 +213,9 @@ make game
 
 
 
-If you want to get UML for another class. Press the following command separately.
+If you want to ganerate an UML for another class. Enter the following:
 
+**change class to the real name of class**
 
 
 ```bash
@@ -213,21 +229,29 @@ pyreverse -o png -p pyreverse class.py
 
 
 
-where class is the name of wanted class.
+
 
   
 
 ### Documentation:
 
 
-Two ways to create docs for projects.
+Assume you are on repo directory
+Navigate to dice_game/docs/ and enter
 
+```bash
+make html
+```
 
-1: Navigate to repo/docs and enter **make html**
+And by now, the documentation for the project has created
+to open it:
+
 
 ```bash
 cd _build/html
 ``` 
+you need to open **index.html**
+
 
 If you are on windows:
 
@@ -242,20 +266,6 @@ open index.html
 ```
 
 
-2: To get docs within dice_game folder:
-
-
-```bash
-make pdoc
-```
-
-
-
-You will get another folder ‘doc’ and you are able to find all documentation inside it.
-
-
-  
-  
 
 
 
@@ -264,7 +274,10 @@ You will get another folder ‘doc’ and you are able to find all documentation
 
 Manualy comman lines
 --------------------
-  
+
+If you do not have choco
+
+
 Inside dice_game folder:
 
 To test all module within the pachage:
@@ -326,9 +339,11 @@ pyreverse -o png -p pyreverse *.py
 
 Some parts of code taken from:
 
-
+```bash
 https://gitlab.com/mikael-roos/sustainable-programming-exercise
+```
 
 
+```bash
 https://stackoverflow.com/
-
+```
