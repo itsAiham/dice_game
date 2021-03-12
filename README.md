@@ -27,14 +27,22 @@ Setup you need
 I am expecting you to have _Choco_ installed.
 Or you may follow the following path for installation.
 
+
+
+```bash
 www.chocolatey.org/install
+
+```
 
 
 
 Have _Make_ on your environment
 
-www.chocolatey.org/packages/make
 
+
+```bash
+www.chocolatey.org/packages/make
+```
 
 
 and finally
@@ -47,6 +55,15 @@ On Repo directory, enter the equivalent command line according to your operating
 
 
 If you are using Mac or Linux, python3 is used to approach python operation. Meanwhile,  python on windows.
+
+
+
+Please, check that you got graphviz
+
+
+```bash
+dot -V
+```
 
 
 
@@ -102,7 +119,7 @@ Now, let gets start
 
 
   
-#### Run the game:
+### Run the game:
 
 
 Navigate to dice_game file, using **cd dice_file**
@@ -117,7 +134,7 @@ You can always press ? or help to get the introduction.
 
 
   
-#### Testing:
+### Testing:
 
 After you are done with the game, let us trying tests some code.
 
@@ -125,45 +142,82 @@ After you are done with the game, let us trying tests some code.
 Enter:
 
 
-**make coverage**, to run unittest and get the report about testing.
+To run unittest and get the report about testing.
+
+```bash
+make coverage
+```
 
 
-**make html**,  to get a visual report about which lines have been covered and which not.
+To get a visual report about which lines have been covered and which not.
+
+```bash
+make html
+```
 
 
-**make flake8**, to run code cleaner.
+Run flake8, code cleaner.
+
+```bash
+make flake8
+```
 
 
-**make pylint**, to run code analysis.
+Run code analysis.
+
+```bash
+make pylint
+```
 
 
-**make test**, to run both tests.
+Run both tests.
+
+```bash
+make test
+```
 
 
   
-#### UML:
+### UML
 
 
-**make pyreverse**, to create uml for whoe packages.
+Create uml for whoe packages.
 
 
-**make game**, to create UML for game class
+```bash
+make pyreverse
+```
+
+
+Ganerate UML for game class
+
+
+```bash
+make game
+```
+
 
 
 If you want to get UML for another class. Press the following command separately.
 
 
-**pyreverse class.py**
+
+```bash
+pyreverse class.py
+```
 
 
-**pyreverse -o png -p pyreverse class.py**
+```bash
+pyreverse -o png -p pyreverse class.py
+``` 
+
 
 
 where class is the name of wanted class.
 
   
 
-#### Documentation:
+### Documentation:
 
 
 Two ways to create docs for projects.
@@ -219,41 +273,62 @@ To test all module within the pachage:
 coverage  run -m unittest discover . “test_*.py” 
 ```
 
+Create report AFTER running tests:
 
-( coverage report -m )		Create report AFTER ran testing.
+```bash
+coverage report -m
+```
 
-( coverage html )			Create HTML report
+Create HTML report:
 
-( flake8 )  		To run flake8
+```bash
+coverage html
+```
 
-( pylint *.py )       To run pylint on all files that have py extension.
+Run flake8:
 
+```bash
+ flake8
+```
 
-Feel free to COPY exactly what inside brackets
+To run pylint on all file:
 
-
-#### UML:
-
-
-"pyreverse *.py "
-
-
-"pyreverse -o png -p pyreverse *.py  " 	To generate UML for whole package.
- 
-
-
-
-
+```bash
+pylint *.py
+``` 
 
 
 
-#### Reference:
+### UML:
+
+
+```bash
+pyreverse *.py
+``` 
+
+
+
+To genetate UML for whole the pachage.
+
+```bash
+pyreverse -o png -p pyreverse *.py
+```
+
+
+
+
+
+
+
+
+### Reference:
 
 
 Some parts of code taken from:
 
 
 https://gitlab.com/mikael-roos/sustainable-programming-exercise
+
 
 https://stackoverflow.com/
 
