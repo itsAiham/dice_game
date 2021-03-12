@@ -37,7 +37,7 @@ class Intelligence():
             print("Computer: I think my score gonna be higher now!")
             return True
 
-        elif self.cheat_decison() and value in (1, 6):
+        if self.cheat_decison() and value in (1, 6):
             print("bst bst -->  Computer CHEATS!!")
             return False
 
