@@ -166,9 +166,35 @@ where class is the name of wanted class.
 #### Documentation:
 
 
-To get the class, method documentations
+Two ways to create docs for projects.
 
-Press:  **make pdoc**
+
+1: Navigate to repo/docs and enter **make html**
+
+```bash
+cd _build/html
+``` 
+
+If you are on windows:
+
+```bash
+start index.html
+```
+
+mac:
+
+```bash
+open index.html
+```
+
+
+2: To get docs within dice_game folder:
+
+
+```bash
+make pdoc
+```
+
 
 
 You will get another folder ‘doc’ and you are able to find all documentation inside it.
@@ -187,8 +213,12 @@ Manualy comman lines
   
 Inside dice_game folder:
 
+To test all module within the pachage:
 
-( coverage  run -m unittest discover . “test_*.py” )		Test all modules within the package.
+```bash
+coverage  run -m unittest discover . “test_*.py” 
+```
+
 
 ( coverage report -m )		Create report AFTER ran testing.
 
