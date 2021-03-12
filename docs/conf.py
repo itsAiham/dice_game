@@ -32,7 +32,6 @@ author = 'Aiham Altahan, Mohammed Horani, Osagie Osahenagharu'
 # ones.
 extensions = [
     
-    'readthedocs_ext.readthedocs',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary', 
     'sphinx.ext.viewcode',
