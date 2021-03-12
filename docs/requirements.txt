@@ -1,19 +1,9 @@
-# Unittest
-coverage
-
-
-#metrics.pylint
-flake8
-flake8-docstrings
-flake8-polyfill
-pylint
-
-# Documentation
-pdoc3
-sphinx
-sudo
-sphinx_rtd_theme
-conda
-mesa
-conda
-graphviz
+Sphinx==3.5.2
+-e git+https://github.com/alendit/sphinx-pyreverse.git@590ed51fc1edac9a98a91a2bf559a313bfd6b994#egg=sphinx_pyreverse
+sphinx-rtd-theme==0.5.1
+sphinxcontrib-applehelp==1.0.2
+sphinxcontrib-devhelp==1.0.2
+sphinxcontrib-htmlhelp==1.0.3
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-qthelp==1.0.3
+sphinxcontrib-serializinghtml==1.1.4
