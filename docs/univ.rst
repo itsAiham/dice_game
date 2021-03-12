@@ -5,7 +5,7 @@ Kristianstad's university
 
 
 
-.. figure:: ../imo/Kristianstad.jpg
+.. figure:: /_images/Kristianstad.jpg
 
 
     https://www.hkr.se/
