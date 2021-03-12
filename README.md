@@ -35,12 +35,19 @@ www.chocolatey.org/packages/make
 ```
 
 
-the last version of pip
-some feature will not work with an old version!
+New version of pip, some features are not working with old one!
+
+on mac:
 
 ```bash
 pip3 install pip --upgrade
 ```
+
+on win:
+```bash
+pip install pip --upgrade
+```
+
 
 and finally
 
@@ -58,24 +65,34 @@ Navigate into repo
 if you are a windows user, use always **python** insteade of **python3**
 
 
+_env_ is the name of the VE you going to create
+
 ```bash
-python3 -m venv env      Where _env_ the name of it and you may change it.
+python3 -m venv env
+```
+
+
+To activate it write:	
+
+```bash
+. env/bin/activate
 ```
 
 
 
-
-	To activate it write:	". env/bin/activate"
-
-        To deactivate it:	        "deactivate"
-
-
 To activate it on windows:
-       
+```bash
+. env/Scripts/activate
+```
+   
 
-       To activate it write:	". env/Scripts/activate"
+To deactivate it on both operating system:
 
-       To deactivate it:	        "deactivate"
+
+```bash
+deactivate
+```
+
 
 
 
@@ -129,7 +146,7 @@ Now, let gets start
 ### Run the game:
 
 
-Navigate into dice_game the folder not the whole repo, using **cd dice_file**
+Navigate into dice_game the folder *where dice_gama a folder*, using **cd dice_file**
 
  
 ```bash
@@ -137,7 +154,7 @@ python3 main.py
 ```
 
 
-Notice that you enter another terminal, and you would not exit it unless you follow enter **q** or other exit commands.
+Notice that you enter another terminal, and you would not exit it unless you enter **q** or other exit commands.
 
 You can always press ? or help to get the introduction within game terminal.
 
