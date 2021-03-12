@@ -52,21 +52,21 @@ To create venv
 --------------
 
 
-**python3 -m venv env**   Which is _env_ the name of it and you may change it.
+**python3 -m venv env**   Where _env_ the name of it and you may change it.
 
 
-	To activate it write:	**. env/bin/activate**	
+	To activate it write:	". env/bin/activate"
 
-        To deactivate it:	        **deactivate**
+        To deactivate it:	        "deactivate"
 
 
 
 **Python -m venv env**     If you are on windows
        
 
-       To activate it write:	**. env/bin/activate**
+       To activate it write:	". env/bin/activate"
 
-       To deactivate it:	        **deactivate**
+       To deactivate it:	        "deactivate"
 
 
 
@@ -92,14 +92,14 @@ After activating enter the following command:
 
 
 
-
-
+  
+  
 Now, let gets start
 --------------------
 
 
 
-
+  
 #### Run the game:
 
 
@@ -114,7 +114,7 @@ You can always press ? or help to get the introduction.
 
 
 
-
+  
 #### Testing:
 
 After you are done with the game, let us trying tests some code.
@@ -138,7 +138,7 @@ Enter:
 **make test**, to run both tests.
 
 
-
+  
 #### UML:
 
 
@@ -159,7 +159,7 @@ If you want to get UML for another class. Press the following command separately
 
 where class is the name of wanted class.
 
-
+  
 
 #### Documentation:
 
@@ -172,21 +172,21 @@ Press:  **make pdoc**
 You will get another folder ‘doc’ and you are able to find all documentation inside it.
 
 
+  
+  
 
 
 
 
 
 
-
-
-#### Manualy comman lines:
-
-
+Manualy comman lines
+--------------------
+  
 Inside dice_game folder:
 
 
-( coverage  run -m unittest discover . “test_*py” )		Test all modules within the package.
+( coverage  run -m unittest discover . “test_*.py” )		Test all modules within the package.
 
 ( coverage report -m )		Create report AFTER ran testing.
 
@@ -196,6 +196,8 @@ Inside dice_game folder:
 
 ( pylint *.py )       To run pylint on all files that have py extension.
 
+
+Feel free to COPY exactly what inside brackets
 
 
 #### UML:
@@ -209,7 +211,7 @@ Inside dice_game folder:
 
 
 
-
+  
 #### Who are we:
 
 
@@ -223,13 +225,13 @@ Mohammed Horani
 Osagie Osahenagharu
 
 
-
+  
 
 www.hkr.se
 
-
-
-
+  
+  
+  
 
 
 
