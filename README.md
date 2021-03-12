@@ -1,5 +1,6 @@
-﻿Welcome in Dice Game!\
+﻿Welcome in Dice Game!
 =====================
+
 
 
 This project has been created by students in Kristianstad university in Sweden.
