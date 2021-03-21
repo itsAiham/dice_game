@@ -8,8 +8,10 @@ build:
     analysis:
       tests:
        override:
-          - command: ./run-my-tests
+          - command: './run-tests.sh'
             coverage:
-              file: dice_game/
+              file: '.coverage'
+              config_file: '.coverage'
+              format: 'py-cc'
         #override:
           #- py-scrutinizer-run
