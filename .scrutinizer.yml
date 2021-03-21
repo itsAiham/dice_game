@@ -10,6 +10,6 @@ build:
        override:
           - command: ./run-my-tests
             coverage:
-              file: dice_game/.coverage.xml
+              file: dice_game/
         #override:
           #- py-scrutinizer-run
