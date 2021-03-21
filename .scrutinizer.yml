@@ -12,6 +12,5 @@ build:
             coverage:
               file: '.coverage'
               config_file: '.coverage'
-              format: 'py-cc'
         #override:
           #- py-scrutinizer-run
