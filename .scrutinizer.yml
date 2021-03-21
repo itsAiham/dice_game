@@ -7,11 +7,11 @@ build:
   nodes:
     coverage:
       tests:
-        override:
-          - command: './run-tests.sh'
-            coverage:
-              file: '.coverage'
-              config_file: '.coveragerc'
-              format: 'py-cc'
         #override:
-          #- py-scrutinizer-run
+         # - command: './run-tests.sh'
+          #  coverage:
+           #   file: '.coverage'
+            #  config_file: '.coveragerc'
+             # format: 'py-cc'
+        override:
+          - py-scrutinizer-run
