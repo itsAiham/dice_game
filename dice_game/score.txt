@@ -1,6 +1,0 @@
-player name: Kim (score) -> 25
-player name: User2 (score) -> 50
-player name: Anna (score) -> 50
-player name: Adam (score) -> 23
-player name: User1 (score) -> 50
-player name: Computer (score) -> 33
