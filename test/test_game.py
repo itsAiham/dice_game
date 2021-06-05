@@ -60,21 +60,48 @@ class TestGameClass(unittest.TestCase):
         self.assertEqual(self.game.player2.get_name(), "USER2")
         # Check that computer_controler is off
         self.assertFalse(self.game.get_computer_controler())
-
-    def test_switcher(self):
-        """Test Switcher."""
-        # Testing switcher
-        self.game.set_game_status(True)
-        before_switching = self.game.get_playing_now()
+    
+    @patch.object(Game, 'switch_with_computer')
+    def test_switch_with_computer(self, mock_calls_swit_com):
+        # self.game.set_computer_controler(True)
+        self.game.computer_controlar = True
+        # self.game.set_game_status(True)
+        self.game.still_going = True
+        self.game.set_playing_now(self.game.computer_player)
+        # self.game.switch_with_computer()
         self.game.switcher()
-        after_switching = self.game.get_playing_now()
-        self.assertNotEqual(before_switching, after_switching)
+        self.game.switch_with_computer()
+        mock_calls_swit_com.assert_called()
 
-        # another test and assuming it is ccomputer's turn
+    @patch.object(Game, 'switch_between_humans')
+    def test_switch_with_human_players(self, mock_calls_swit_humans):
+        self.game.set_computer_controler(False)
         self.game.set_game_status(True)
-        self.game.set_playing_now(self.computer_player)
+        self.game.set_playing_now(self.game.player2)
+        self.assertTrue(self.game.get_playing_now() == self.game.player2)
+
+        # self.game.switch_with_computer()
         self.game.switcher()
-        self.assertEqual(self.game.get_playing_now(), self.game.player1)
+        self.game.switch_between_humans()
+        mock_calls_swit_humans.assert_called()
+        # self.assertTrue(self.game.get_playing_now() == self.game.player1)
+        # self.game.switch_with_computer()
+        # self.assertTrue(self.game.get_playing_now() == self.game.computer_player)
+
+    # def test_switcher(self):
+    #     """Test Switcher."""
+    #     # Testing switcher
+    #     self.game.set_game_status(True)
+    #     before_switching = self.game.get_playing_now()
+    #     self.game.switcher()
+    #     after_switching = self.game.get_playing_now()
+    #     self.assertNotEqual(before_switching, after_switching)
+
+    #     # another test and assuming it is ccomputer's turn
+    #     self.game.set_game_status(True)
+    #     self.game.set_playing_now(self.computer_player)
+    #     self.game.switcher()
+    #     self.assertEqual(self.game.get_playing_now(), self.game.player1)
 
     # def test_roll(self):
     #     """Test roll."""
@@ -218,10 +245,12 @@ class TestGameClass(unittest.TestCase):
         res = self.game.get_playing_now()
         self.assertEqual(res, exp)
 
-    # def test_get_game_status(self):
-    #     """Test get_game_status."""
-    #     res = self.game.get_game_status()
-    #     self.assertIn(res, [True, False])
+    def test_get_game_status(self):
+        """Test get_game_status."""
+        self.game.still_going = False
+        self.assertFalse(self.game.get_game_status())
+        self.game.still_going = True
+        self.assertTrue(self.game.get_game_status())
 
     def test_set_cmputer_controler(self):
         """Test set_computer_controler."""
@@ -239,6 +268,3 @@ class TestGameClass(unittest.TestCase):
         res = self.game.get_face()
         self.assertEqual(res, 2)
 
-
-if __name__ == '__main__':
-    unittest.main()

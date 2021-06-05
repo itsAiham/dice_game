@@ -22,7 +22,6 @@ I expect to change your name by entering 'name (Your Name)'
 
 Prese help or ? to get more about commands
 """
-# import app.shell
 from app.shell import Shell
 
 

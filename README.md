@@ -94,7 +94,7 @@ If you want to avoid creating VE. You may use comman line mentioned in section b
 After activating enter the following command:
 
 ```bash
-Python3 -m pip install -r requirements.txt
+make install
 ```
 
 check that your pip list
@@ -118,10 +118,8 @@ pip3 install pip --upgrade
 
 ### Run the game:
 
-Navigate into dice*game the folder \_where dice_gama a folder*, using **cd dice_file**
-
 ```bash
-python3 main.py
+python main.py
 ```
 
 Notice that you enter another terminal, and you would not exit it unless you enter **q** or other exit commands.
