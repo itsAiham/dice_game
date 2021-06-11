@@ -1,0 +1,11 @@
+build:
+  nodes:
+    coverage:
+      tests:
+        override:
+          - command: 'make coverage-xml'
+            coverage:
+              file: 'coverage.xml'
+              config_file: '.coveragerc'
+              format: 'py-cc'
+

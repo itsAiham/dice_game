@@ -55,6 +55,10 @@ coverage:
 coverage-html:
 	coverage html
 
+
+coverage-xml: coverage
+	coverage xml
+
 pylint:
 	cd app/ && pylint *.py
 	cd test/ && pylint *.py
