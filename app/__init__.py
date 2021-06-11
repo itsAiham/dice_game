@@ -1,0 +1,1 @@
+"""init packaging dice-game."""

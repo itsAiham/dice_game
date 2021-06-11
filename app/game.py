@@ -57,6 +57,7 @@ class Game():
             player1_name = "USER1"
         self.player1.set_name(player1_name)
         self.player2.set_name("Computer")
+        self.set_computer_controler(True)
         #  Hold player object temporarily above
 
         if player_amount == 2:
@@ -64,6 +65,7 @@ class Game():
             if player2_name == "":
                 player2_name = "USER2"
             self.player2.set_name(player2_name)
+            self.set_computer_controler(False)
 
         else:
             self.player2 = self.computer_player
@@ -73,57 +75,25 @@ class Game():
         """
         Switch between players.
 
-        Considering who is playing now and whether
-        computer-controler true or false, take rule in switching turns
-        between players.
+        Considering if the game has computer controler or not,
+        based on the second player it return a method to switch
+        between players
         """
         if self.get_computer_controler():
             self.switch_with_computer()
         self.switch_between_humans()
 
     def switch_with_computer(self):
+        """Switches between player one and computer player."""
         if self.get_playing_now() == self.player1:
             self.set_playing_now(self.computer_player)
         self.set_playing_now(self.player1)
 
-
-
     def switch_between_humans(self):
+        """Switches between player one and player two."""
         if self.get_playing_now() == self.player1:
             self.set_playing_now(self.player1)
         self.set_playing_now(self.player2)
-        # if self.computer_controler():
-        #     self.switchs_with_computer()
-        
-        # self.switchs_between_human()
-        # if (self.get_computer_controler() and
-        #    self.get_playing_now() == self.player1):
-        #     self.set_playing_now(self.computer_player)
-        #     return self.computer_turn()
-
-        # if (self.get_computer_controler() and
-        #    self.get_playing_now() == self.computer_player):
-        #     self.set_playing_now(self.player1)
-
-        # if self.get_playing_now() == self.player1 and not (
-        #    self.get_computer_controler()):
-
-        #     print(">>>>> Start {} turn <<<<<\n".format(
-        #         self.player2.get_name()))
-        #     return self.set_playing_now(self.player2)
-
-        # print(">>>>> Start {} turn <<<<<\n".format(self.player1.get_name()))
-        # return self.set_playing_now(self.player1)
-
-    # def switchs_with_computer(self):
-    #     if self.get_playing_now() == self.computer_player:
-    #         self.set_playing_now(self.player1)
-    #     self.set_playing_now(self.computer_player)
-
-    # def switchs_between_human(self):
-    #     if self.get_playing_now() == self.player1:
-    #         self.set_playing_now(self.player2)
-    #     self.set_playing_now(self.player1)
 
     def roll(self):
         """
