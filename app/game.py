@@ -158,9 +158,7 @@ class Game():
 
     def computer_turn(self):
         """Take orders from Intelligence class to control the decison."""
-        # print(">>>>> Start Computer turn <<<<<\n")
         print(" " * 9, "Start Computer turn", 9 * " ")
-
         while self.get_game_status():
             reaction = self.computer_player.reaction.get_inti_decision(
                        self.computer_player,
