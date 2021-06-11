@@ -5,7 +5,7 @@ build:
         override:
           - command: 'make coverage-xml'
             coverage:
-              file: 'coverage.xml'
+              file: 'test/.coverage'
               config_file: '.coveragerc'
               format: 'py-cc'
 
