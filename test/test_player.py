@@ -6,9 +6,9 @@
 
 import unittest
 import random
-from player import Player
-from game import Game
-from dice import Dice
+from app.player import Player
+from app.game import Game
+from app.dice import Dice
 
 
 class TestPlayer(unittest.TestCase):

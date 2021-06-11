@@ -4,7 +4,7 @@
 
 """Player Class to control player objects create in game."""
 
-from intelligence import Intelligence
+from app.intelligence import Intelligence
 
 
 class Player():

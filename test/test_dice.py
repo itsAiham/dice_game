@@ -6,7 +6,7 @@
 
 import unittest
 import random
-from dice import Dice
+from app.dice import Dice
 
 
 class TestDiceClass(unittest.TestCase):

@@ -11,7 +11,7 @@ and call the equivalent method to operate the work.
 """
 
 import cmd
-from game import Game
+from app.game import Game
 
 
 class Shell(cmd.Cmd):

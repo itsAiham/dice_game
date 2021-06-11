@@ -13,10 +13,10 @@ After analyzing the input, game object
 reach the equivalent method for processing
 """
 
-from player import Player
-from dice import Dice
-from highscore import Highscore
-from histogram import Histogram
+from app.player import Player
+from app.dice import Dice
+from app.highscore import Highscore
+from app.histogram import Histogram
 
 
 class Game():
@@ -77,24 +77,53 @@ class Game():
         computer-controler true or false, take rule in switching turns
         between players.
         """
-        if (self.get_computer_controler() and
-           self.get_playing_now() == self.player1):
+        if self.get_computer_controler():
+            self.switch_with_computer()
+        self.switch_between_humans()
+
+    def switch_with_computer(self):
+        if self.get_playing_now() == self.player1:
             self.set_playing_now(self.computer_player)
-            return self.computer_turn()
+        self.set_playing_now(self.player1)
 
-        if (self.get_computer_controler() and
-           self.get_playing_now() == self.computer_player):
+
+
+    def switch_between_humans(self):
+        if self.get_playing_now() == self.player1:
             self.set_playing_now(self.player1)
+        self.set_playing_now(self.player2)
+        # if self.computer_controler():
+        #     self.switchs_with_computer()
+        
+        # self.switchs_between_human()
+        # if (self.get_computer_controler() and
+        #    self.get_playing_now() == self.player1):
+        #     self.set_playing_now(self.computer_player)
+        #     return self.computer_turn()
 
-        if self.get_playing_now() == self.player1 and not (
-           self.get_computer_controler()):
+        # if (self.get_computer_controler() and
+        #    self.get_playing_now() == self.computer_player):
+        #     self.set_playing_now(self.player1)
 
-            print(">>>>> Start {} turn <<<<<\n".format(
-                self.player2.get_name()))
-            return self.set_playing_now(self.player2)
+        # if self.get_playing_now() == self.player1 and not (
+        #    self.get_computer_controler()):
 
-        print(">>>>> Start {} turn <<<<<\n".format(self.player1.get_name()))
-        return self.set_playing_now(self.player1)
+        #     print(">>>>> Start {} turn <<<<<\n".format(
+        #         self.player2.get_name()))
+        #     return self.set_playing_now(self.player2)
+
+        # print(">>>>> Start {} turn <<<<<\n".format(self.player1.get_name()))
+        # return self.set_playing_now(self.player1)
+
+    # def switchs_with_computer(self):
+    #     if self.get_playing_now() == self.computer_player:
+    #         self.set_playing_now(self.player1)
+    #     self.set_playing_now(self.computer_player)
+
+    # def switchs_between_human(self):
+    #     if self.get_playing_now() == self.player1:
+    #         self.set_playing_now(self.player2)
+    #     self.set_playing_now(self.player1)
 
     def roll(self):
         """
@@ -129,8 +158,7 @@ class Game():
 
     def computer_turn(self):
         """Take orders from Intelligence class to control the decison."""
-        print(">>>>> Start Computer turn <<<<<\n")
-
+        print(" " * 9, "Start Computer turn", 9 * " ")
         while self.get_game_status():
             reaction = self.computer_player.reaction.get_inti_decision(
                        self.computer_player,

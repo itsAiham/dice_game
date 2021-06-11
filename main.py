@@ -22,9 +22,10 @@ I expect to change your name by entering 'name (Your Name)'
 
 Prese help or ? to get more about commands
 """
-import shell
+from app.shell import Shell
 
 
 if __name__ == '__main__':
     print(__doc__)
-    shell.Shell().cmdloop()
+    shell = Shell()
+    shell.cmdloop()

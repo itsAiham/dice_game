@@ -8,8 +8,8 @@
 import unittest
 import sys
 import io
-from histogram import Histogram
-from player import Player
+from app.histogram import Histogram
+from app.player import Player
 
 
 class TestHistogram(unittest.TestCase):

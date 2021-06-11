@@ -1,9 +1,0 @@
-doc/*
-*_cache
-__pycach__
-.coverage
-htmlcov
-build/*
-htmlcov
-*.dot
-*.json
