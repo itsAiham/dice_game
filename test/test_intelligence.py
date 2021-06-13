@@ -44,7 +44,8 @@ class TestIntelligenceClass(unittest.TestCase):
     # def test_act_hard(self):
     #     """Test act-hard method."""
     #     exp = self.intelligence.act_hard(self.dice.get_dice())
-    #     if self.intelligence.cheat_decison() and 1 < self.dice.get_dice() > 6:
+    #     if (self.intelligence.cheat_decison() and
+    #     1 < self.dice.get_dice() > 6):
     #         self.assertTrue(exp)
 
     #     self.assertIn(exp, self.intelligence.orders)

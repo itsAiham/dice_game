@@ -6,8 +6,8 @@
 
 """Test highscore module."""
 
-import io
-import sys
+# import io
+# import sys
 import unittest
 from app.player import Player
 from app.game import Game
@@ -41,19 +41,19 @@ class TestHigscore(unittest.TestCase):
         self.game.set_playing_now(self.game.player2)
         self.player1.change_score(4)
 
-    def test_read_file(self):
-        """Test read_file."""
-        self.score.get_path()
-        catch_output = io.StringIO()
-        sys.stdout = catch_output
+    # def test_read_file(self):
+    #     """Test read_file."""
+    #     self.score.get_path()
+    #     catch_output = io.StringIO()
+    #     sys.stdout = catch_output
 
-        self.score.read_file()
+    #     self.score.read_file()
 
-        sys.stdout = sys.__stdout__
-        output = catch_output.getvalue()
+    #     sys.stdout = sys.__stdout__
+    #     output = catch_output.getvalue()
 
-        # self.assertIn("player name: ", output)
-        # self.assertIn(" (score) -> ", output)
+    #     self.assertIn("player name: ", output)
+    #     self.assertIn(" (score) -> ", output)
 
     def test_get_path(self):
         """Test get_path."""

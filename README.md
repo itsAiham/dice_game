@@ -74,7 +74,7 @@ To activate it VE in mac:
 To activate it on windows:
 
 ```bash
-. .vnenv/Scripts/activate
+. .venv/Scripts/activate
 ```
 
 To deactivate it on both operating system:

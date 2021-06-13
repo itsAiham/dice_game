@@ -1,0 +1,16 @@
+checks:
+    python:
+        code_rating: true
+        duplicate_code: true
+
+build:
+  python:
+    version: "3.5.0"
+    coverage:
+        tests:
+          override:
+            - command: 'make coverage'
+              coverage:
+                file: 'test/.coverage'
+                config_file: '.coveragerc'
+                format: 'py-cc'
