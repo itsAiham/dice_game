@@ -12,9 +12,8 @@
 #
 import os
 import sys
-# sys.path.insert(0, 'C:\\Users\\46737\\Desktop\\divided_work\\dice_game_repo\\dice_game')
-# sys.path.append('../')
-sys.path.insert(0, os.path.abspath('../dice_game'))
+sys.path.insert(0, os.path.abspath('..'))
+
 
 
 

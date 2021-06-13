@@ -33,6 +33,7 @@ clean:
 	rm -rf .coverage
 	rm -rf classes.dot
 
+	rm -rf doc/
 
 
 clean-doc:
@@ -73,23 +74,33 @@ pydoc:
 	$(PYTHON) -m pydoc -w "$(PWD)"
 	mv *.html doc/pydoc
 
+
+# documentation. Use docs folder for higher-level documents
 pdoc:
 	rm -rf doc/pdoc
 	pdoc --html -o doc/pdoc .
 
 doc: pdoc pyreverse #pydoc sphinx
 
+# uml for app/ test/ packages
 pyreverse:
 	install -d doc/pyreverse
-	pyreverse *.py
-	dot -Tpng classes.dot -o doc/pyreverse/classes.png
-	dot -Tpng packages.dot -o doc/pyreverse/packages.png
+	pyreverse app/*.py
+	dot -Tpng classes.dot -o doc/pyreverse/app-classes.png
+	dot -Tpng packages.dot -o doc/pyreverse/app-packages.png
+	rm -f classes.dot packages.dot
+	ls -l doc/pyreverse
+
+	pyreverse test/*.py
+	dot -Tpng classes.dot -o doc/pyreverse/test-classes.png
+	dot -Tpng packages.dot -o doc/pyreverse/test-packages.png
 	rm -f classes.dot packages.dot
 	ls -l doc/pyreverse
 
 
 
 # Complexity measurement
+
 radon-cc:
 	radon cc . -a
 
@@ -102,10 +113,20 @@ radon-raw:
 radon-hal:
 	radon hal .
 
-bandit: bandit-app bandit-test
+
+radon:
+	radon-cc
+	radon-mi
+	radon-raw
+	radon-hal
+
+
+
 
 bandit-app:
 	bandit -r app/
 
 bandit-test:
 	bandit -r test/
+
+bandit: bandit-app bandit-test
