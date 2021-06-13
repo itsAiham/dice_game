@@ -1,11 +1,5 @@
-build:
-  nodes:
-    coverage:
-      tests:
-        override:
-          - command: 'make coverage-xml'
-            coverage:
-              file: 'test/.coverage'
-              config_file: '.coveragerc'
-              format: 'py-cc'
-
+[run]
+include = lib/cohesion/parser.py
+          lib/cohesion/filesystem.py
+          lib/cohesion/module.py
+          lib/cohesion/flake8_extension.py
