@@ -3,7 +3,7 @@ build:
     coverage:
       tests:
         override:
-          - command: 'make coverage-xml'
+          - command: 'make coverage'
             coverage:
               file: 'test/.coverage'
               config_file: '.coveragerc'
