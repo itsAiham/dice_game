@@ -1,8 +1,4 @@
-﻿[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/itsAiham/dice_game/?branch=master)
-
-[![Build Status](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/build.png?b=master)](https://scrutinizer-ci.com/g/itsAiham/dice_game/build-status/master)
-
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+﻿[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/itsAiham/dice_game/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/build.png?b=master)](https://scrutinizer-ci.com/g/itsAiham/dice_game/build-status/master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/itsAiham/dice_game/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 <br>
 # Welcome in Dice Game!
