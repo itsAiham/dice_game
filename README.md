@@ -177,36 +177,17 @@ Create uml for whole the package.
 make pyreverse
 ```
 
-You got ump with .png extension within dice_game folder.
-
-To ganerate UML for only game class.
-
-```bash
-make game
-```
-
-If you want to ganerate an UML for another class. Enter the following:
-
-**change class to the real name of class**
-
-```bash
-pyreverse class.py
-```
-
-```bash
-pyreverse -o png -p pyreverse class.py
-```
+Follow doc/ where you can find separate subfolders, each include UMLs
 
 ### Documentation:
 
-Assume you are on repo directory
 Navigate to dice_game/docs/ and enter
 
 ```bash
 make html
 ```
 
-And by now, the documentation for the project has created
+And by now, the documentation for the project has been created
 to open it:
 
 ```bash
@@ -261,28 +242,4 @@ To run pylint on all file:
 
 ```bash
 pylint *.py
-```
-
-### UML:
-
-```bash
-pyreverse *.py
-```
-
-To genetate UML for whole the pachage.
-
-```bash
-pyreverse -o png -p pyreverse *.py
-```
-
-### Reference:
-
-Some parts of code taken from:
-
-```bash
-https://gitlab.com/mikael-roos/sustainable-programming-exercise
-```
-
-```bash
-https://stackoverflow.com/
 ```
