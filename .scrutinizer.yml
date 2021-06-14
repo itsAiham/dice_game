@@ -11,5 +11,5 @@ build:
           - command: make coverage-xml
             coverage:
               file: ".coverage"
-
               format: "py-cc"
+          - py-scrutinizer-run
