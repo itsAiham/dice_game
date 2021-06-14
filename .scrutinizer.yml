@@ -8,4 +8,8 @@ build:
     analysis:
       tests:
         override:
-          - py-scrutinizer-run
+          - command: make coverage
+            coverage:
+              file: ".coverage"
+
+              format: "py-cc"
