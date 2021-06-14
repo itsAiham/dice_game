@@ -92,6 +92,56 @@ class TestGameClass(unittest.TestCase):
         res = self.game.playing_now.get_name()
         self.assertTrue(res == "new_name")
 
+    @patch.object(Game, 'switcher')
+    def test_roll(self, mock_calls_switcher):
+        """Tests that roll-method calls switcher when dice-face is 1."""
+        self.game.set_game_status(True)
+        self.game.player2.score = 33
+        self.game.set_playing_now(self.game.player2)
+        self.game.dice.rolled_dice = 1
+        self.game.roll()
+        self.game.switcher()
+        mock_calls_switcher.assert_called()
+
+    @patch.object(Game, 'print_out_dice')
+    def test_console(self, mock_calls_dice_printer):
+        """Tests console method calls print_out_dice."""
+        self.game.console(self.game.player1)
+        mock_calls_dice_printer.assert_called()
+
+    @patch.object(Player, 'change_score')
+    def test_console1(self, mock_calls_change_score):
+        """Tests console method calls change-score."""
+        self.game.player1.score = 10
+        self.game.dice.rolled_dice = 4
+        self.game.console(self.game.player1)
+        self.player1.change_score()
+        mock_calls_change_score.assert_called()
+
+    @patch.object(Game, 'end_game')
+    def test_console2(self, mock_calls_end_game):
+        """Tests player wins and game ends."""
+        self.game.player1.score = 49
+        self.game.set_playing_now(self.game.player1)
+        self.game.dice.rolled_dice = 4
+        self.game.roll()
+        self.game.console(self.game.player1)
+        mock_calls_end_game.assert_called()
+
+    def test_console_returns_false(self):
+        """Tests that consoles returns false when 
+        dice face is 1 or 6."""
+        self.game.dice.rolled_dice = 1
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.console(self.game.player1)
+        self.assertFalse(exp)
+
+        self.game.dice.rolled_dice = 6
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.console(self.game.player1)
+        self.assertFalse(exp)
+
+
     def test_end_game(self):
         """Test end_game."""
         histogram = Histogram()
@@ -113,6 +163,13 @@ class TestGameClass(unittest.TestCase):
         highscore = Highscore(self.game.player1, self.game.player2)
         highscore.write_file = MagicMock(name='write_file')
         highscore.write_file()
+    
+    def test_cheat(self):
+        """Tests cheat feature where it cheating made be showing the 
+        upcoming die-rollment."""
+        self.game.dice.rolled_dice = 5
+        exp = self.game.cheat()
+        self.assertEqual(exp, 5)
 
     def test_check_levels(self):
         """Test check_levels."""

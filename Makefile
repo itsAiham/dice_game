@@ -32,6 +32,7 @@ clean:
 	rm -rf test/__pycache__
 	rm -rf .coverage
 	rm -rf classes.dot
+	rm -rf doc/
 
 
 

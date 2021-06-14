@@ -112,7 +112,6 @@ class Game():
         player.change_score(self.dice.get_dice())
         player.set_score_list(self.dice.get_dice())
         self.print_score(player)
-        # self.mock_in_console = self.dice.get_dice()
         self.set_face(self.dice.get_dice())  # For test purpose.
 
         if self.dice.get_dice() in (1, 6):
@@ -188,7 +187,7 @@ class Game():
         """Call other methods to process game ending."""
         self.score = Highscore(self.player1, self.player2)
 
-        # self.score.write_highscore()
+        self.score.write_highscore()
         self.set_game_status(False)
         print("WOW! Congra {} you won the game!". format(player.get_name()))
         self.histogram.print_histogram(self.player1,
