@@ -22,7 +22,7 @@ class Shell(cmd.Cmd):
     computer_control = bool
 
     def __init__(self):
-        """Init the object."""
+        """Init game object."""
         super().__init__()
         try:
             self.game = Game()
@@ -80,15 +80,15 @@ class Shell(cmd.Cmd):
             if self.game.get_game_status():
                 self.game.switcher()
             else:
-                print("Game is End. You can 'start' a new game")
+                print("Game is End. You must 'start' a new game")
         except AttributeError:
             print("No game and no turns to hold!!")
 
     def do_cheat(self, _):
         """Return the upcoming value of the dice."""
-        print("The next dice value is {n},"
+        print("The next dice value is {n}, "
               "you know what to do, don't yah! =)\n"
-              "".format(n=self.game.cheat()))
+              .format(n=self.game.cheat()))
 
     def do_score(self, _):
         """Read from highscore file."""

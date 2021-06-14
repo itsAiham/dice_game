@@ -47,9 +47,9 @@ class Game():
 
     def create_player(self, player_amount):
         """
-        Create Players accourding to passed parameter.
+        Create Players according to passed parameter.
 
-        Get info from shell.py, fit equavelent players with names.
+        Get info from shell.py, fit equivalent players with names.
         Turn computer_controller on/off.
         """
         player1_name = input("Enter the first player's name >> ")
@@ -57,7 +57,7 @@ class Game():
             player1_name = "USER1"
         self.player1.set_name(player1_name)
         self.player2.set_name("Computer")
-        self.set_computer_controler(True)
+        # self.set_computer_controler(True)
         #  Hold player object temporarily above
 
         if player_amount == 2:
@@ -65,7 +65,7 @@ class Game():
             if player2_name == "":
                 player2_name = "USER2"
             self.player2.set_name(player2_name)
-            self.set_computer_controler(False)
+            # self.set_computer_controler(False)
 
         else:
             self.player2 = self.computer_player
@@ -79,9 +79,9 @@ class Game():
         based on the second player it return a method to switch
         between players
         """
-        if self.get_computer_controler():
-            self.switch_with_computer()
-        self.switch_between_humans()
+        if self.get_playing_now() == self.player1:
+            self.set_playing_now(self.player2)
+        self.set_playing_now(self.player1)
 
     def switch_with_computer(self):
         """Switches between player one and computer player."""
@@ -92,8 +92,8 @@ class Game():
     def switch_between_humans(self):
         """Switches between player one and player two."""
         if self.get_playing_now() == self.player1:
-            self.set_playing_now(self.player1)
-        self.set_playing_now(self.player2)
+            self.set_playing_now(self.player2)
+        self.set_playing_now(self.player1)
 
     def roll(self):
         """
@@ -210,12 +210,12 @@ class Game():
         """Return currently player."""
         return self.playing_now
 
-    def set_computer_controler(self, bool):
+    def set_computer_controler(self, controller):
         """Setter for a boolen variable.
 
         Help in switching turns.
         """
-        self.computer_controlar = bool
+        self.computer_controlar = controller
 
     def get_computer_controler(self):
         """Getter for a boolen variable.

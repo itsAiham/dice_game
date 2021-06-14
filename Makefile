@@ -65,7 +65,8 @@ pylint:
 	cd test/ && pylint *.py
 
 flake8:
-	flake8
+	cd app/ && flake8
+	cd test/ && flake8
 
 lint: flake8 pylint
 
