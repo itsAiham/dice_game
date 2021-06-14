@@ -8,6 +8,7 @@ build:
     analysis:
       tests:
         override:
+          - command: make flake8
           - command: make coverage-xml
             coverage:
               file: ".coverage"
