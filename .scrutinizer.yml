@@ -8,7 +8,7 @@ build:
     analysis:
       tests:
         override:
-          - command: make coverage
+          - command: make coverage-xml
             coverage:
               file: ".coverage"
 

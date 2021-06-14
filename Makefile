@@ -45,11 +45,11 @@ clean-all: clean clean-doc
 
 # Code unit-tests and linter
 unittest:
-	 $(PYTHON) -m unittest discover test "*_test.py"
+	$(PYTHON) -m unittest discover test "test_*.py"
 
 
 coverage:
-	coverage run -m unittest discover test/ "test_*.py"
+	coverage run -m unittest
 	coverage report -m
 
 coverage-html:
