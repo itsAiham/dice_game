@@ -61,21 +61,49 @@ class TestGameClass(unittest.TestCase):
         # Check that computer_controler is off
         self.assertFalse(self.game.get_computer_controler())
 
-    @patch.object(Game, 'switch_with_computer')
-    def test_switch_with_computer(self, mock_calls_swit_com):
+    @patch.object(Game, 'set_playing_now')
+    def test_switch_with_computer(self, mock_set_computer):
+        """
+        Tests switching turns between player1 and computer_player.
+
+        When switching between player1 and computer-player,
+        _switch_with_computer method returns computer-turn method which
+        in turns set_game_player to be the computer.
+        """
+        self.game.set_game_status(True)
+        self.game.set_computer_controler(True)
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.get_playing_now()
+        self.assertTrue(exp == self.game.player1)
+
+        self.game._switch_with_computer()
+        self.game.set_playing_now(self.game.computer_player)
+        mock_set_computer.assert_called()
+
+    def test_switch_between_humans(self):
+        """Tests switching turns between player1 and player2."""
+        self.game.set_game_status(True)
+        self.game.set_computer_controler(False)
+        self.game.set_playing_now(self.game.player1)
+
+        exp_player1 = self.game.get_playing_now()
+        self.assertTrue(self.game.get_playing_now() == exp_player1)
+        self.game._switch_between_humans()
+        exp_player2 = self.game.get_playing_now()
+        self.assertTrue(self.game.get_playing_now() == exp_player2)
+
+    @patch.object(Game, '_switch_with_computer')
+    def test_switch_with_computer_calling(self, mock_calls_swit_com):
         """Test switching between player-1 and computer player."""
-        # self.game.set_computer_controler(True)
         self.game.computer_controlar = True
-        # self.game.set_game_status(True)
         self.game.still_going = True
         self.game.set_playing_now(self.game.computer_player)
-        # self.game.switch_with_computer()
         self.game.switcher()
-        self.game.switch_with_computer()
+        self.game._switch_with_computer()
         mock_calls_swit_com.assert_called()
 
-    @patch.object(Game, 'switch_between_humans')
-    def test_switch_with_human_players(self, mock_calls_swit_humans):
+    @patch.object(Game, '_switch_between_humans')
+    def test_switch_human_calling(self, mock_calls_swit_humans):
         """Test-switching between humans' players."""
         self.game.set_computer_controler(False)
         self.game.set_game_status(True)
@@ -83,14 +111,83 @@ class TestGameClass(unittest.TestCase):
         self.assertTrue(self.game.get_playing_now() == self.game.player2)
 
         self.game.switcher()
-        self.game.switch_between_humans()
+        self.game._switch_between_humans()
         mock_calls_swit_humans.assert_called()
 
     def test_change_name(self):
         """Test changing name feature."""
+        self.game.set_playing_now(self.game.player1)
         self.game.change_name("new_name")
-        res = self.game.playing_now.get_name()
+        res = self.game.player1.get_name()
         self.assertTrue(res == "new_name")
+
+    @patch.object(Game, 'switcher')
+    def test_roll(self, mock_calls_switcher):
+        """Tests that roll-method calls switcher when dice-face is 1."""
+        self.game.set_game_status(True)
+        self.game.player2.score = 33
+        self.game.set_playing_now(self.game.player2)
+        self.game.dice.rolled_dice = 1
+        self.game.roll()
+        self.game.switcher()
+        mock_calls_switcher.assert_called()
+
+    @patch.object(Game, 'print_out_dice')
+    def test_console(self, mock_calls_dice_printer):
+        """Tests console method calls print_out_dice."""
+        self.game.console(self.game.player1)
+        mock_calls_dice_printer.assert_called()
+
+    @patch.object(Player, 'change_score')
+    def test_console1(self, mock_calls_change_score):
+        """Tests console method calls change-score."""
+        self.game.player1.score = 10
+        self.game.dice.rolled_dice = 4
+        self.game.console(self.game.player1)
+        self.player1.change_score()
+        mock_calls_change_score.assert_called()
+
+    @patch.object(Game, 'end_game')
+    def test_console2(self, mock_calls_end_game):
+        """Tests player wins and game ends."""
+        self.game.player1.score = 49
+        self.game.set_playing_now(self.game.player1)
+        self.game.dice.rolled_dice = 4
+        self.game.roll()
+        self.game.console(self.game.player1)
+        mock_calls_end_game.assert_called()
+
+    def test_console_returns_false(self):
+        """Tests that console returns false when dice is 1 or 6."""
+        self.game.dice.rolled_dice = 1
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.console(self.game.player1)
+        self.assertFalse(exp)
+
+        self.game.dice.rolled_dice = 6
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.console(self.game.player1)
+        self.assertFalse(exp)
+
+    @patch.object(Game, 'switcher')
+    def test_computer_turn_calls_switcher(self, mock_calls_switcher):
+        """Tests switcher callable by comuter-turn method."""
+        self.game.set_game_status(True)
+        self.game.set_playing_now(self.game.computer_player)
+        self.game.computer_player.reaction.get_inti_decision(
+            self.game.computer_player,
+            False
+        )
+        self.game.computer_turn()
+        self.game.switcher()
+        mock_calls_switcher.assert_called()
+
+        # tests that switcher is called when dice-face is 1
+        self.game.dice.rolled_dice = 1
+        self.game.set_playing_now(self.game.computer_player)
+        self.game.roll()
+        self.game.switcher()
+        mock_calls_switcher.assert_called()
 
     def test_end_game(self):
         """Test end_game."""
@@ -113,6 +210,16 @@ class TestGameClass(unittest.TestCase):
         highscore = Highscore(self.game.player1, self.game.player2)
         highscore.write_file = MagicMock(name='write_file')
         highscore.write_file()
+
+    def test_cheat(self):
+        """
+        Tests cheat feature.
+
+        Cheating is made by showing the upcoming die-rollment.
+        """
+        self.game.dice.rolled_dice = 5
+        exp = self.game.cheat()
+        self.assertEqual(exp, 5)
 
     def test_check_levels(self):
         """Test check_levels."""
