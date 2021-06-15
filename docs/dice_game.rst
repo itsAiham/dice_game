@@ -3,10 +3,10 @@
 Game Modules
 ===============
 
-dice
------
+shell 
+------
 
-.. automodule:: dice
+.. automodule:: app.shell
    :members:
    :undoc-members:
    :show-inheritance:
@@ -14,7 +14,15 @@ dice
 game
 -----
 
-.. automodule:: game
+.. automodule:: app.game
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dice
+-----
+
+.. automodule:: app.dice
    :members:
    :undoc-members:
    :show-inheritance:
@@ -22,7 +30,7 @@ game
 highscore
 ----------
 
-.. automodule:: highscore
+.. automodule:: app.highscore
    :members:
    :undoc-members:
    :show-inheritance:
@@ -30,7 +38,7 @@ highscore
 histogram 
 -----------
 
-.. automodule:: histogram
+.. automodule:: app.histogram
    :members:
    :undoc-members:
    :show-inheritance:
@@ -38,7 +46,7 @@ histogram
 intelligence
 --------------
 
-.. automodule:: intelligence
+.. automodule:: app.intelligence
    :members:
    :undoc-members:
    :show-inheritance:
@@ -53,7 +61,7 @@ intelligence
 player
 --------
 
-.. automodule:: player
+.. automodule:: app.player
    :members:
    :undoc-members:
    :show-inheritance:
@@ -66,32 +74,24 @@ player
 ..    :undoc-members:
 ..    :show-inheritance:
 
-shell 
-------
-
-.. automodule:: shell
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 
 
 Test Modules
 ===============
 
+test\_game
+----------------------------
 
-test\_dice 
------------
-
-.. automodule:: test_dice
+.. automodule:: test.test_game
    :members:
    :undoc-members:
    :show-inheritance:
 
-test\_game
-----------------------------
+test\_dice 
+-----------
 
-.. automodule:: test_game
+.. automodule:: test.test_dice
    :members:
    :undoc-members:
    :show-inheritance:
@@ -99,7 +99,7 @@ test\_game
 test\_highscore
 ---------------
 
-.. automodule:: test_highscore
+.. automodule:: test.test_highscore
    :members:
    :undoc-members:
    :show-inheritance:
@@ -107,14 +107,14 @@ test\_highscore
 test\_histogram
 -----------------
 
-.. automodule:: test_histogram
+.. automodule:: test.test_histogram
    :members:
    :undoc-members:
    :show-inheritance:
 
 test\_intelligence 
 -------------------
-.. automodule:: test_intelligence
+.. automodule:: test.test_intelligence
    :members:
    :undoc-members:
    :show-inheritance:
@@ -122,7 +122,7 @@ test\_intelligence
 test\_player
 ---------------
 
-.. automodule:: test_player
+.. automodule:: test.test_player
    :members:
    :undoc-members:
    :show-inheritance:
