@@ -57,7 +57,6 @@ class Game():
             player1_name = "USER1"
         self.player1.set_name(player1_name)
         self.player2.set_name("Computer")
-        # self.set_computer_controler(True)
         #  Hold player object temporarily above
 
         if player_amount == 2:
@@ -65,35 +64,35 @@ class Game():
             if player2_name == "":
                 player2_name = "USER2"
             self.player2.set_name(player2_name)
-            # self.set_computer_controler(False)
+            self.set_computer_controler(False)
 
         else:
             self.player2 = self.computer_player
+            self.set_computer_controler(True)
         print("Game Starts!\n\n")
 
     def switcher(self):
         """
         Switch between players.
 
-        Considering if the game has computer controler or not,
-        based on the second player it return a method to switch
-        between players
+        Considering if the game has computer controller or not,
+        based on that it calls a method to switch between players
         """
-        if self.get_playing_now() == self.player1:
-            self.set_playing_now(self.player2)
-        self.set_playing_now(self.player1)
+        if self.get_computer_controler():
+            self._switch_with_computer()
+        self._switch_between_humans()
 
-    def switch_with_computer(self):
+    def _switch_with_computer(self):
         """Switches between player one and computer player."""
         if self.get_playing_now() == self.player1:
-            self.set_playing_now(self.computer_player)
-        self.set_playing_now(self.player1)
+            return self.computer_turn()
+        return self.set_playing_now(self.player1)
 
-    def switch_between_humans(self):
+    def _switch_between_humans(self):
         """Switches between player one and player two."""
         if self.get_playing_now() == self.player1:
-            self.set_playing_now(self.player2)
-        self.set_playing_now(self.player1)
+            return self.set_playing_now(self.player2)
+        return self.set_playing_now(self.player1)
 
     def roll(self):
         """
@@ -127,22 +126,24 @@ class Game():
 
     def computer_turn(self):
         """Take orders from Intelligence class to control the decison."""
-        print(" " * 9, "Start Computer turn", 9 * " ")
+        self.set_playing_now(self.computer_player)
+        print(" " * 20, "Start Computer turn" + "\n\n")
         while self.get_game_status():
             reaction = self.computer_player.reaction.get_inti_decision(
                        self.computer_player,
-                       self.cheat())
+                       self.cheat()
+            )
 
             if not reaction:
-                print("\t\t\t\t>>>>>  Computer decide to HOLD <<<<<")
+                print(" " * 20, "Computer decide to HOLD" + "\n\n")
                 self.switcher()
                 break
 
-            print("\t\t\t\t>>>>>  Computer decide to ROLL <<<<<")
+            print(" " * 20, "Computer decide to ROLL" + "\n\n")
             self.playing_now = self.computer_player
             force_stop = self.console(self.computer_player)
             if not force_stop:
-                print("\t\t\t\t>>>>>  Computer lose its turn <<<<<")
+                print(" " * 20, "Computer lose its turn" + "\n\n")
                 self.switcher()
                 break
 
@@ -175,9 +176,9 @@ class Game():
         print("{} got:". format(player.get_name()))
         print(" ______")
         print(r"|\______\ ")
-        print("||      |")
-        print("||   {}  |".format(number))
-        print(r"\|______|"+"\n")
+        print("||       |")
+        print("||   {}   |".format(number))
+        print(r"\|_______|"+"\n")
 
     def highscore(self):
         """Call method  sprint out from highscore file."""

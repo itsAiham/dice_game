@@ -48,7 +48,7 @@ class TestGameClass(unittest.TestCase):
         self.game.player1_name = mock
         self.assertEqual(self.game.player1.get_name(), "name")
         self.assertEqual(self.game.player2.get_name(), "Computer")
-    
+
     @patch('builtins.input', return_value='')
     def test_create_player2(self, mock):
         """Test create_player."""
@@ -61,47 +61,48 @@ class TestGameClass(unittest.TestCase):
         # Check that computer_controler is off
         self.assertFalse(self.game.get_computer_controler())
 
-    def test_switch_with_computer(self):
-        """Tests switching turns between USER1 and computer_player."""
+    @patch.object(Game, 'set_playing_now')
+    def test_switch_with_computer(self, mock_set_computer):
+        """
+        Tests switching turns between player1 and computer_player.
+
+        When switching between player1 and computer-player,
+        _switch_with_computer method returns computer-turn method which
+        in turns set_game_player to be the computer.
+        """
         self.game.set_game_status(True)
-        self.game.player1.name = "USER1"
         self.game.set_computer_controler(True)
+        self.game.set_playing_now(self.game.player1)
+        exp = self.game.get_playing_now()
+        self.assertTrue(exp == self.game.player1)
+
+        self.game._switch_with_computer()
         self.game.set_playing_now(self.game.computer_player)
-        exp_computer = self.game.get_playing_now().get_name()
-        self.assertTrue(exp_computer == "Computer")
-        self.game.switch_with_computer()
-        exp_player1 = self.game.get_playing_now().get_name()
-        self.assertTrue(exp_player1 == "USER1")
-        self.game.switch_with_computer()
-        exp_player1 = self.game.get_playing_now().get_name()
-        self.assertTrue(exp_player1 == "USER1")
+        mock_set_computer.assert_called()
 
     def test_switch_between_humans(self):
-        """Tests switching turns between USER1 and USER2."""
+        """Tests switching turns between player1 and player2."""
         self.game.set_game_status(True)
-        self.game.player1.name = "USER1"
-        self.game.player2.name = "USER2"
         self.game.set_computer_controler(False)
         self.game.set_playing_now(self.game.player1)
 
-        exp_player1 = self.game.get_playing_now().get_name()
-        self.assertTrue(exp_player1 == "USER1")
-        self.game.switch_between_humans()
-        exp_player2 = self.game.get_playing_now().get_name()
-        self.assertTrue(exp_player2 == "USER2")
+        exp_player1 = self.game.get_playing_now()
+        self.assertTrue(self.game.get_playing_now() == exp_player1)
+        self.game._switch_between_humans()
+        exp_player2 = self.game.get_playing_now()
+        self.assertTrue(self.game.get_playing_now() == exp_player2)
 
-
-    @patch.object(Game, 'switch_with_computer')
+    @patch.object(Game, '_switch_with_computer')
     def test_switch_with_computer_calling(self, mock_calls_swit_com):
         """Test switching between player-1 and computer player."""
         self.game.computer_controlar = True
         self.game.still_going = True
         self.game.set_playing_now(self.game.computer_player)
         self.game.switcher()
-        self.game.switch_with_computer()
+        self.game._switch_with_computer()
         mock_calls_swit_com.assert_called()
 
-    @patch.object(Game, 'switch_between_humans')
+    @patch.object(Game, '_switch_between_humans')
     def test_switch_human_calling(self, mock_calls_swit_humans):
         """Test-switching between humans' players."""
         self.game.set_computer_controler(False)
@@ -110,13 +111,14 @@ class TestGameClass(unittest.TestCase):
         self.assertTrue(self.game.get_playing_now() == self.game.player2)
 
         self.game.switcher()
-        self.game.switch_between_humans()
+        self.game._switch_between_humans()
         mock_calls_swit_humans.assert_called()
 
     def test_change_name(self):
         """Test changing name feature."""
+        self.game.set_playing_now(self.game.player1)
         self.game.change_name("new_name")
-        res = self.game.playing_now.get_name()
+        res = self.game.player1.get_name()
         self.assertTrue(res == "new_name")
 
     @patch.object(Game, 'switcher')
@@ -156,8 +158,7 @@ class TestGameClass(unittest.TestCase):
         mock_calls_end_game.assert_called()
 
     def test_console_returns_false(self):
-        """Tests that consoles returns false when 
-        dice face is 1 or 6."""
+        """Tests that console returns false when dice is 1 or 6."""
         self.game.dice.rolled_dice = 1
         self.game.set_playing_now(self.game.player1)
         exp = self.game.console(self.game.player1)
@@ -176,7 +177,7 @@ class TestGameClass(unittest.TestCase):
         self.game.computer_player.reaction.get_inti_decision(
             self.game.computer_player,
             False
-        ) 
+        )
         self.game.computer_turn()
         self.game.switcher()
         mock_calls_switcher.assert_called()
@@ -209,10 +210,13 @@ class TestGameClass(unittest.TestCase):
         highscore = Highscore(self.game.player1, self.game.player2)
         highscore.write_file = MagicMock(name='write_file')
         highscore.write_file()
-    
+
     def test_cheat(self):
-        """Tests cheat feature where it cheating made be showing the 
-        upcoming die-rollment."""
+        """
+        Tests cheat feature.
+
+        Cheating is made by showing the upcoming die-rollment.
+        """
         self.game.dice.rolled_dice = 5
         exp = self.game.cheat()
         self.assertEqual(exp, 5)

@@ -19,7 +19,7 @@ class Shell(cmd.Cmd):
 
     prompt = '(game): '
     intro = "Enter help or ? to get the words that can be used.\n"
-    computer_control = bool
+    # computer_control = bool
 
     def __init__(self):
         """Init game object."""
@@ -95,29 +95,30 @@ class Shell(cmd.Cmd):
         try:
             self.game.highscore()
         except AttributeError:
-            print("Sorry! You need to start a game firt.")
+            print("Sorry! You need to start a game first.")
 
     def do_help(self, _):
         """Print orders' format."""
-        print("\nstart n   : Enter 'start' + 'space' + '1' or '2' to"
+        print("\nstart n : Enter 'start' + 'space' + '1' or '2' to"
               "start or restart a new game.")
-        print("name        : 'name' + 'your name' to"
+        print("name      : 'name' + 'your name' to"
               " change the current player name.")
-        print("roll        : Roll the dice.")
-        print("score       : Print out highscores.")
-        print("pass        : To hold the turn and switch to the next player.")
-        print("cheat       : Return the value of the upcoming dice.")
-        print("level       : Change the computer level.")
-        print("q, exit, EOF: Exit the game.\n")
+        print("roll      : Roll the dice.")
+        print("score     : Print out highscores.")
+        print("pass      : To hold the turn and switch to the next player.")
+        print("cheat     : Return the value of the upcoming dice.")
+        print("level     : Change the computer level.")
+        print("end       : Ends currently game without exiting the terminal.")
+        print("q, exit   : Exit the game.\n")
 
     def default(self, line):
         """Print out message when invalid input."""
         self.stdout.write('\nOBS! Unknown command:  %s.\n'
-                          "Enter help to get info\n\n"
+                          "Enter help or ? to get info\n\n"
                           '' % (line,))
 
     def do_end(self, _):
-        """End the game."""
+        """End currnet game."""
         try:
             del self.game
         except AttributeError:
@@ -125,14 +126,9 @@ class Shell(cmd.Cmd):
 
     def do_exit(self, _):
         # pylint: disable=no-self-use
-        """Leave the game."""
+        """Exit CMD-terminal the game."""
         return True
 
     def do_q(self, arg):
-        """Leave the game."""
-        return self.do_exit(arg)
-
-    def do_EOF(self, arg):
-        # pylint: disable=invalid-name
-        """Leave the game."""
+        """Exit CMD-terminal the game."""
         return self.do_exit(arg)

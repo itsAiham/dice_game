@@ -53,9 +53,8 @@ coverage:
 	coverage run -m unittest
 	coverage report -m
 
-coverage-html:
+html: coverage
 	coverage html
-
 
 coverage-xml: coverage
 	coverage xml
@@ -86,13 +85,19 @@ pdoc:
 doc: pdoc pyreverse #pydoc sphinx
 
 pyreverse:
-	install -d doc/pyreverse
-	pyreverse *.py
-	dot -Tpng classes.dot -o doc/pyreverse/classes.png
-	dot -Tpng packages.dot -o doc/pyreverse/packages.png
+	install -d doc/pyreverse/app
+	pyreverse app/*.py
+	dot -Tpng classes.dot -o doc/pyreverse/app/classes.png
+	dot -Tpng packages.dot -o doc/pyreverse/app/packages.png
 	rm -f classes.dot packages.dot
 	ls -l doc/pyreverse
 
+	install -d doc/pyreverse/test
+	pyreverse test/*.py
+	dot -Tpng classes.dot -o doc/pyreverse/test/classes.png
+	dot -Tpng packages.dot -o doc/pyreverse/test/packages.png
+	rm -f classes.dot packages.dot
+	ls -l doc/pyreverse
 
 
 # Complexity measurement

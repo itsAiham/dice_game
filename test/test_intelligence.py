@@ -42,7 +42,11 @@ class TestIntelligenceClass(unittest.TestCase):
         )
         self.assertTrue(self.game.computer_player.reaction)
 
+        # Tests it calls act-easy when computer score higher than 10
         self.game.computer_player.score = 20
+        self.game.computer_player.reaction.act_normal(
+            self.game.computer_player
+        )
         self.game.computer_player.reaction.act_easy()
         mock_calls_act_easy.assert_called()
 
@@ -52,21 +56,44 @@ class TestIntelligenceClass(unittest.TestCase):
 
         The method returns True when dice-face between 2-5.
         """
-        self.game.computer_player.reaction.cheat_decison = True
+        self.game.computer_player.reaction.orders = (True, True)
         self.game.dice.rolled_dice = 4
-        exp_true = self.intelligence.act_hard(4)
+        exp_true = self.game.computer_player.reaction.act_hard(4)
         self.assertTrue(exp_true)
 
-        # self.game.dice.rolled_dice = 6
-        # exp_false = self.intelligence.act_hard(6)
-        # self.assertFalse(exp_false)
+        self.game.dice.rolled_dice = 6
+        exp_false = self.game.computer_player.reaction.act_hard(6)
+        self.assertFalse(exp_false)
 
     @patch.object(Intelligence, 'act_easy')
     def test_act_hard_calls_easy(self, mock_calls_act_easy):
         """Tests act-hard calls easy when cheat_decison = False."""
-        self.game.computer_player.reaction.cheat_decison = False
+        self.game.computer_player.reaction.orders = (False, False)
+        self.game.computer_player.reaction.act_hard(3)
         self.game.computer_player.reaction.act_easy()
         mock_calls_act_easy.assert_called()
+
+    @patch.object(Intelligence, 'act_normal')
+    def test_get_inti_decision_normal(self, mock_calls_act_normal):
+        """Tests get_inti_decision method calls act-normal."""
+        self.game.check_levels("normal")
+        self.game.computer_player.reaction.get_inti_decision(
+            self.game.computer_player,
+            5
+        )
+        self.game.computer_player.reaction.act_easy()
+        mock_calls_act_normal.assert_called()
+
+    @patch.object(Intelligence, 'act_hard')
+    def test_get_inti_decision_hard(self, mock_calls_act_hard):
+        """Tests get_inti_decision method calls act-hard."""
+        self.game.check_levels("hard")
+        self.game.computer_player.reaction.get_inti_decision(
+            self.game.computer_player,
+            2
+        )
+        self.game.computer_player.reaction.act_hard()
+        mock_calls_act_hard.assert_called()
 
     def test_cheat_decision(self):
         """Test cheat-decision."""
