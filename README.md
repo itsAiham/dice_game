@@ -5,8 +5,6 @@
 # Welcome in Dice Game!
 
 <br>
-The project created by students in Kristianstad university in Sweden.
-
 Bellow are steps and setups you need to follow all features.
 
 The basic goal of the project, is to reach clean, bugs free code.
@@ -19,7 +17,7 @@ Game has been developed using python OOP. The way to approach clean code with no
 
 I am expecting you to have _make_ installed
 
-Have _Make_ on your environment (in case you want to enter short comman lines)
+Have _Make_ on your environment (in case you want to enter short command lines)
 
 ```bash
 www.chocolatey.org/packages/make
@@ -87,9 +85,9 @@ To deactivate it on both operating system:
 deactivate
 ```
 
-Notice that if you are a windows user, I am expecting you to use _GIT-bash_.
+Notice that if you are a windows user, use _GIT-bash_.
 
-If you want to avoid creating VE. You may use comman line mentioned in section bellow.
+If you want to avoid creating VE. You may use command line mentioned in section bellow.
 
 <br>
 
@@ -101,7 +99,7 @@ After activating enter the following command:
 make install
 ```
 
-check that your pip list
+check libs list
 
 ```bash
 pip3 list
@@ -110,7 +108,7 @@ pip3 list
 If the list does not have more that three lines.
 Then your installation faild.
 
-You need to upgrade your pip using the following comman
+You need to upgrade your pip using the following command
 
 ```bash
 pip3 install pip --upgrade
@@ -128,7 +126,7 @@ python main.py
 
 Notice that you enter another terminal, and you would not exit it unless you enter **q** or other exit commands.
 
-You can always press ? or help to get the introduction within game terminal.
+You can always press ? or help to get the introductions within game terminal.
 
 ### Testing:
 
